@@ -1,0 +1,923 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Storm documentation by ThemeCatcher.net</title>
+<link rel="stylesheet" type="text/css" href="attachments/styles.css" />
+<script type="text/javascript" src="attachments/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="attachments/scripts.js"></script>
+</head>
+<body>
+<div class="outside">
+<!-- Begin Wrapper -->
+<div id="wrapper">
+    <!-- Begin Header -->
+    <div id="header">
+        <div class="intro">Storm documentation by ThemeCatcher</div>
+        <div class="theme">Storm</div>
+        <div class="about clearfix">
+            <div class="about-left">
+                <table>
+                    <tr>
+                        <td class="about-col-1">Created</td>
+                        <td class="about-col-2">29th March 2011</td>
+                    </tr>
+                    <tr>
+                        <td class="about-col-1">Version</td>
+                        <td class="about-col-2">1.2.5 (20th January 2017)</td>
+                    </tr>
+                    <tr>
+                        <td class="about-col-1">Author</td>
+                        <td class="about-col-2"><a href="http://www.themecatcher.net">ThemeCatcher</a></td>
+                    </tr>
+                    <tr>
+                        <td class="about-col-1">Contact us</td>
+                        <td class="about-col-2"><a href="http://themeforest.net/user/ThemeCatcher">via ThemeForest</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="about-right">
+                <p>Thank you for purchasing Storm. If you have any questions that are beyond the
+                scope of this help file, please feel free to email us via our user page contact form
+                <a class="popup" href="http://themeforest.net/user/ThemeCatcher">here</a>.</p>
+            </div>
+        </div>
+    </div>
+    <!-- End Header -->
+    <div id="content" class="clearfix">
+      <h1 class="thin"><a name="toc"></a>Table of contents</h1>
+      <div class="menu clearfix">
+        <ol>
+            <li><a href="#start">Getting started</a></li>
+            <li><a href="#global">Global customisation</a></li>
+            <li><a href="#bg">Background customisation</a></li>
+            <li><a href="#page">Page customisation</a></li>
+            <li><a href="#portfolio">Portfolio customisation</a></li>
+            <li><a href="#contact">Contact customisation</a></li>
+            <li><a href="#ajax">Ajax version customisation</a></li>
+            <li><a href="#third">Third party scripts</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#support">Further support</a></li>
+        </ol>
+      </div>
+      <h1><a name="start" id="start"></a>Getting started<a class="top-link" href="#toc">Top</a></h1>
+      <h2 class="toggler toggler-closed">HTML files</h2>
+      <div>
+      <p>The HTML files for the template are in the <code>template</code> folder. Every HTML file has the same
+      basic structure - a single column fixed layout. Each part of the file is commented to help you find
+      the section you want to make changes to. The content area for each page begins with <code>&lt;div class="content-inner"&gt;</code>,
+      the home page is <code>index.html</code> file.</p>
+      </div>
+      <h2 class="toggler toggler-closed">CSS files</h2>
+      <div>
+      <p>Storm has one main stylesheet <code>css/styles.css</code> and this is the file that you should be
+      making any changes to. The file is split into sections by numbered comments and the file has a table
+      of contents to help you find the right section.</p>
+      </div>
+      <h2 class="toggler toggler-closed">JavaScript files</h2>
+      <div>
+      <p>There are 3 JavaScript files used in most of the HTML files, located in the <code>js</code> folder:</p>
+      <ul>
+        <li>1. <strong>jQuery</strong> - js/jquery-1.7.2.min.js - The jQuery JavaScript library</li>
+        <li>2. <strong>Plugins</strong> - js/plugins.js - All third-party plugins &amp; scripts</li>
+        <li>3. <strong>Custom scripts</strong> - js/scripts.js - Custom JavaScript</li>
+      </ul>
+      <h3>Adding your own JavaScript</h3>
+      <p>If you want to add your own JavaScript, you can do so in <code>js/scripts.js</code>, if you need
+      to add code that executes after the DOM is ready you can add it after this line:</p>
+      <pre>$(document).ready(function() {</pre>
+      <p>To add your own third party plugin just add a link to the JavaScript file in the head of the document.
+      If you placed your plugin in the js folder, you would add this code inside the <code>&lt;head&gt;</code>
+      tags of the document:</p>
+      <pre>&lt;script type="text/javascript" src="js/<strong>your_plugin.js</strong>"&gt;&lt;/script&gt;</pre>
+      </div>
+      <h2 class="toggler toggler-closed">PSD files</h2>
+      <div>
+      <p>You will find the PSD file in <code>resources/storm.psd</code>. This PSD has the design for most pages and they are hidden,
+      so just find the folder in the layers panel that is named after the page and show it. Every element is grouped
+      neatly in their own folders. Hidden elements are in yellow layers.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Ajax version</h2>
+      <div>
+      <p>The Ajax version uses most of the same files as the standard version with two exceptions:</p>
+      <ul>
+        <li>The homepage is <code>index.ajax.html</code> instead of <code>index.html</code></li>
+        <li>The JavaScript file is <code>js/scripts.ajax.js</code> instead of <code>js/scripts.js</code></li>
+      </ul>
+      <p>If you are choosing to use
+      the Ajax version, you should make a backup of the standard <code>index.html</code> by renaming to
+      <code>index.standard.html</code>, then rename <code>index.ajax.html</code> to <code>index.html</code>.
+      When any instructions in this document ask you to make a change to <code>scripts.js</code>, you should make your
+      changes to <code>scripts.ajax.js</code> instead. There are two links inside <code>index.ajax.html</code> that
+      point to <code>index.ajax.html</code> which you should now also change to point to <code>index.html</code>.
+      Just do a find and replace in the source code of your editor for <code>index.ajax.html</code> and replace
+      it with <code>index.html</code>.</p>
+      <p>Also note that the instructions for the standard version ask you to make changes to all other files
+      when you make a global change to one page, for the Ajax version you only need to make the change to
+      <code>index.html</code> since it's only the content area from the other pages that are loaded in.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Fonts</h2>
+      <div>
+      <p>We have included the fonts that we used for the Cufon font replacement in case you want to
+      make any custom design elements with them.  You will find them in the <code>resources/fonts</code>
+      folder.</p>
+      </div>
+      <h1><a name="global" id="global"></a>Global customisation<a class="top-link" href="#toc">Top</a></h1>
+      <h2 class="toggler toggler-closed">Changing the logo</h2>
+      <div>
+        <p>The existing logo is located at <code>images/logo.png</code>, you can replace that file with your
+        own logo file with the same name.</p>
+        <p>If your logo has a different file extension you will need to change the HTML code of the page, so
+        do a search in the code for the term <span class="find">&lt;!--Logo--&gt;</span> and you should find
+        the <code>&lt;img&gt;</code> tag for the logo.  Change the <code>src=""</code> attribute to point to your
+        new logo.</p>
+        <p><strong>Note:</strong> you will need to make the change to the HTML source code on all the other pages you will
+        be using on your site.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Changing the navigation</h2>
+      <div>
+        <p>To find the navigation in <code>index.html</code> search for <span class="find">&lt;!--Horizontal Menu--&gt;</span>.
+        On the lines below that you'll see the navigation links that you can change to suit your needs.  To
+        make a dropdown menu just start another <code>ul</code> list inside any list item - reuse any
+        code that is there to make the navigation suit your site.</p>
+        <p><strong>Note:</strong> you will need to make the change to the HTML source code on all the other pages you will
+        be using on your site.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Changing the footer information</h2>
+      <div>
+        <p>In index.html search for the term <span class="find">&lt;!--Footers Left Column--&gt;</span>. On
+        the line below, you will find the footer text.</p>
+        <p><strong>Note:</strong> you will need to make the change to the HTML source code on all the other pages you will
+        be using on your site.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Adding your social networking links</h2>
+      <div>
+        <p>To find the HTML code for the social networking "Connect with me" popup box, search <code>index.html</code>
+        for the term <span class="find">facebook.png</span>, this should land you at the first image which is
+        for Facebook.  On the next lines after that, there is one social networking link and icon per line. You
+        should be able to tell what this link is for by looking at the name of the image file or the alt
+        tags.</p>
+        <h3>Removing a link</h3>
+        <p>To remove a link, delete the entire line with the link and image on it.</p>
+        <h3>Adding a link</h3>
+        <p>To add a link, copy the code for an existing icon and paste it onto a new line, then change the image <code>src</code> attribute
+        to point to the icon of the social network or service. We have included a lot of icons in
+        the <code>images/social-icons/</code> folder. You should also change the <code>href</code>
+        attribute of the <code>&lt;a&gt;</code> tag to point to the URL of your account. Here is a complete line for example (only
+        on multiple lines for readability):</p>
+        <pre>&lt;div class="one-icon-wrap"&gt;&lt;a href="http://www.facebook.com/your-username"&gt;
+&lt;img src="images/social-icons/facebook.png" width="32" height="32"
+alt="Facebook" /&gt;&lt;/a&gt;&lt;/div&gt;</pre>
+        <p><strong>Note:</strong> you will need to make the change to the HTML source code on all the other pages you will
+        be using on your site.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Adding your Twitter feed</h2>
+      <div>
+        <p>In the file <code>js/scripts.js</code>, near the top of the file you should find the code for
+        the Twitter settings. Change the Twitter username to yours.</p>
+        <pre>twitterUsername = 'your_username',</pre>
+        <p>You can also change the number of Tweets to suit. Change the code:</p>
+        <pre>tweetCount = 2;</pre>
+        <p>to whatever number you want.</p>
+        <h3>Setting auth tokens (required)</h3>
+        <p>Since June 2013 Twitter now requires auth tokens to fetch tweets from their API. So you will need to do a few more steps to get the Twitter feed to work.
+        <a class="popup" href="http://support.themecatcher.net/storm-wordpress/widgets/twitter-widget">Visit this page for instructions and follow the steps</a> (the steps are
+        for the WordPress version of Storm, but the procedure is the same to get the auth tokens). You should see the following tokens on the Twitter app page:</p>
+        <ul><li>Consumer key</li><li>Consumer secret</li><li>Access token</li><li>Access token secret</li></ul>
+
+        <p>Edit the file <code>js/twitter/config.php</code> and enter the keys within the single quotes. For example:</p>
+
+        <pre>&lt;?php
+
+return array(
+  'consumerKey' => '<strong>YOUR_CONSUMER_KEY</strong>',
+  'consumerSecret' => '<strong>YOUR_CONSUMER_SECRET</strong>',
+  'accessToken' => '<strong>YOUR_ACCESS_TOKEN</strong>',
+  'accessTokenSecret' => '<strong>YOUR_ACCESS_TOKEN_SECRET</strong>',
+);</pre>
+      </div>
+      <h2 class="toggler toggler-closed">Changing the colour scheme</h2>
+      <div>
+        <p>We have made a section in the CSS file so that you can easily override
+        the orange font and rollover colours to whatever colour you like. Go
+        to the <code>styles.css</code> file and under section 20 you will find the hex numbers
+        belonging to the styles use the orange colour. Change the hex number
+        "#FFA200" to your new one and this will change all the relevant
+        styles.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Making the header fixed position</h2>
+      <div>
+        <p>To make the header stay in a fixed position, make these changes to the CSS file <code>styles.css</code>
+        section 2. DESIGN LAYOUT</p>
+        <pre>#header-outer {
+    margin: 0 auto;
+    color: #FFF;
+    background-image: url(../images/header.png);
+    background-repeat: repeat-x;
+    background-position: left 15px;
+    border-top-width: 5px;
+    border-top-style: solid;
+    border-top-color: #000;
+    <strong>position: fixed;
+    width: 100%;
+    z-index: 100;</strong>
+}
+
+.content-inner {
+    width: 940px;
+    <strong>margin-top: 140px;</strong>
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+    padding: 0;
+    line-height: 150%;
+}</pre>
+      </div>
+      <h2 class="toggler toggler-closed">Changing the text inside the search box</h2>
+      <div>
+        <p>If you need to change or translate the 'Search' text, you will find it inside <code>scripts.js</code>, search for the term
+        <span class="find">searchBoxText</span> and change the text to suit.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Changing the map button text</h2>
+      <div>
+        <p>If you need to change or translate the 'Find us' text, you will find it inside the <code>contact.html</code> file. Search for the term
+        <span class="find">view-map</span> and right next to that you will see the text 'Find us', change it to suit.</p>
+        <p>If you need to translate the 'Hide map' text, you will find it inside <code>scripts.js</code>, search for the term
+        <span class="find">hideMapButtonText</span> and change the text to suit.</p>
+      </div>
+      <h1><a name="bg" id="bg"></a>Background customisation<a class="top-link" href="#toc">Top</a></h1>
+      <h2 class="toggler toggler-closed">Adding background images</h2>
+      <div>
+        <p>The backgrounds on the preview version of Storm are not included in the downloadable version due to copyright
+        reasons, so you will need to add your own background images. You are free to download the images
+        that we used and use them yourself, see the section below called <strong>Our live preview background images</strong>.
+        We suggest making the background images around <strong>1680px width</strong> x <strong>1050px height</strong>.
+        This will ensure that the image looks great in almost all screen resolutions.  To keep the download
+        size relatively small we found that choosing a jpeg quality between 40 - 60% meant that the file size
+        was about 250kb - 300kb each.</p>
+        <p>Add your background images to the folder <code>images/backgrounds/</code>.  After that you will
+        need to add links to your images in<code>js/scripts.js</code>, at the top of that file you will find
+        the following code:</p>
+        <pre>var backgrounds = [
+    'images/backgrounds/placeholder.jpg'
+],</pre>
+        <p>Add the paths to your images one on each line with a comma at the end of every line except the last one, the file name itself
+        is not important as long as it points to the your background, e.g.:</p>
+        <pre>var backgrounds = [
+   'images/backgrounds/your_background1.jpg',
+   'images/backgrounds/your_background2.jpg',
+   'images/backgrounds/your_background3.jpg',
+   'images/backgrounds/your_background4.jpg',
+   'images/backgrounds/your_background5.jpg',
+   'images/backgrounds/your_background6.jpg'
+],</pre>
+        <p>We have included a CSS based full screen background fallback for users with JavaScript disabled.  You will need
+        to change <code>index.html</code>, search for the term <span class="find">&lt;!-- Non-JavaScript background --&gt;</span>
+        you'll see an <code>&lt;img&gt;</code> tag that is pointing to the placeholder background.  Change this to
+        point to your background image e.g.</p>
+        <pre>&lt;img src="images/backgrounds/your_background1.jpg" alt="" /&gt;</pre>
+        <p><strong>Note:</strong> you will need to make the change to the HTML source code on all the other pages you will
+        be using on your site.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Adding captions to background images</h2>
+      <div>
+      <p>To add captions to background images, instead of adding a string with the path to the background image array, add a JavaScript object with an <code>image</code> property containing the path to the image, a <code>caption</code> property
+        with the caption HTML, optionally a <code>captionPosition</code> property where you can set the caption position per-image, and optionally a <code>title</code> property to set the hover title for the bullet navigation. See the example below.</p>
+        <pre>var backgrounds = [
+    {
+      image: 'images/backgrounds/your_background1.jpg',
+      caption: '&lt;h1&gt;This is a caption title for image 1&lt;/h1&gt;&lt;p&gt;This is a caption description for image 1&lt;/p&gt;'
+    },
+    {
+      image: 'images/backgrounds/your_background2.jpg',
+      caption: '&lt;h1&gt;This is a caption title for image 2&lt;/h1&gt;&lt;p&gt;This is a caption description for image 2&lt;/p&gt;'
+    },
+    {
+      image: 'images/backgrounds/your_background3.jpg',
+      caption: '&lt;h1&gt;This is a caption title for image 3&lt;/h1&gt;&lt;p&gt;This is a caption description for image 3&lt;/p&gt;',
+      captionPosition: 'left top', // Optionally override the caption position for this image
+      title: 'This is the image title' // Optionally set a title for the bullet navigation for this image
+    }
+],</pre>
+      <p>For all available options for the <code>captionPosition</code> setting, see the section below "Background script options".</p>
+      </div>
+      <h2 class="toggler toggler-closed">Background script options</h2>
+      <div>
+        <p>There are some options you have to change the functionality of the background image script:</p>
+        <table class="options">
+            <tr><th>Key</th><th>Default</th><th>Description</th></tr>
+            <tr><td>speed</td><td>2000</td><td>Speed of the transition between background images, in milliseconds 1000 = 1 second</td></tr>
+            <tr><td>transition</td><td>'fade'</td><td>The transition animation. 'none', 'fade', 'fadeOutFadeIn', 'slideDown', 'slideRight', 'slideUp', 'slideLeft' 'carouselRight', 'carouselLeft'</td></tr>
+            <tr><td>fitLandscape</td><td>false</td><td>If landscape images should be locked to 100% width</td></tr>
+            <tr><td>fitPortrait</td><td>true</td><td>If portrait images should be locked to 100% height</td></tr>
+            <tr><td>fitAlways</td><td>false</td><td>Don't crop images at all</td></tr>
+            <tr><td>positionX</td><td>'center'</td><td>Where to position the image on the X axis. 'left', 'center', 'right'</td></tr>
+            <tr><td>positionY</td><td>'center'</td><td>Where to position the image on the Y axis. 'top', 'center', 'bottom'</td></tr>
+            <tr><td>easing</td><td>'swing'</td><td>The easing functions to use when transitioning (requires jQuery Easing plugin for anything other than swing)</td></tr>
+            <tr><td>controlsSelector</td><td>'#fs-controls'</td><td>The jQuery selector of the element to append the controls to</td></tr>
+            <tr><td>contentSelector</td><td>'#outside'</td><td>The jQuery selector of the part of the page to hide in full screen mode</td></tr>
+            <tr><td>hideSpeed</td><td>1000</td><td>Speed that the website is hidden at, when activating full screen mode, in milliseconds</td></tr>
+            <tr><td>showSpeed</td><td>1000</td><td>Speed that the website is shown at, when closing full screen mode, in milliseconds</td></tr>
+            <tr><td>controlSpeed</td><td>500</td><td>Speed that the controls fades in, in full screen mode, in milliseconds</td></tr>
+            <tr><td>fadeIE</td><td>false</td><td>Whether or not to fade the website in IE 7,8</td></tr>
+            <tr><td>save</td><td>true</td><td>Whether or not to save the current background across pages</td></tr>
+            <tr><td>slideshow</td><td>true</td><td>Enable the slideshow functionality (play/pause button)</td></tr>
+            <tr><td>slideshowAuto</td><td>true</td><td>Start the slideshow automatically</td></tr>
+            <tr><td>slideshowSpeed</td><td>4000</td><td>How long the slideshow stays on one image, in milliseconds</td></tr>
+            <tr><td>random</td><td>false</td><td>Whether the images should be displayed in random order, forces save = false</td></tr>
+            <tr><td>keyboard</td><td>true</td><td>Use the keyboard to control the background images. Left arrow = prev, right arrow = next, esc = close full screen mode.</td></tr>
+            <tr><td>captionPosition</td><td>'center bottom'</td><td>The default caption position. The first part is the X position which can be one of 'left', 'center', 'right'. The second part is the Y position which can be one of 'top', 'center', 'bottom'.</td></tr>
+            <tr><td>alwaysShowCaptions</td><td>false</td><td>Always show the captions</td></tr>
+            <tr><td>captionSpeed</td><td>600</td><td>The speed of the caption fade animation</td></tr>
+            <tr><td>bullets</td><td>true</td><td>Dislay bullet navigation</td></tr>
+            <tr><td>lowQuality</td><td>false</td><td>Turns on lower quality but higher performance transitions</td></tr>
+            <tr><td>errorBackground</td><td>''</td><td>Path to the background image shown if there is an error loading an image</td></tr>
+            <tr><td>breaker</td><td>false</td><td>Display breaker image</td></tr>
+            <tr><td>breakerOnMax</td><td>false</td><td>Display breaker image in maximise mode</td></tr>
+            <tr><td>onInit</td><td>false</td><td>Callback before the first image is shown.</td></tr>
+            <tr><td>onLoad</td><td>false</td><td>Callback that fires right before loading a background image.</td></tr>
+            <tr><td>onComplete</td><td>false</td><td>Callback that fires when the background image has finished loading (and animating).</td></tr>
+            <tr><td>captionEnhancement</td><td>function () {}</td><td>Caption enhancement function e.g. replace Cufon</td></tr>
+        </table>
+        <p>To use the options, open <code>scripts.js</code> and find the code <span class="find">backgroundOptions = {</span>, it's near the top of the file.
+        You should see code looking like the following:</p>
+        <pre>backgroundOptions = {
+
+},</pre>
+        <p>Add your own options between the curly brackets as shown below, each option you add should end in a comma, except the last one, for example</p>
+        <pre>backgroundOptions = {
+    <strong>transition: 'slideLeft',
+    slideshow: false</strong>
+},</pre>
+        <p><strong>Note:</strong> make sure to end each line of your options with a comma (except the last line), or the script will break!</p>
+        <p><strong>Note:</strong> the website fade in / fade out effect has been changed to a show / hide effect in Internet Explorer &lt; 9
+        since the way the browser handles the fading of some positioned elements is not pretty.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Random background images</h2>
+      <div>
+        <pre>backgroundOptions = {
+    <strong>random: true</strong>
+},</pre>
+        <p>See "Background script options" section above for where to add this code.</p>
+      </div>
+	   <h2 class="toggler toggler-closed">Disable the slideshow</h2>
+	   <div>
+	   <pre>backgroundOptions = {
+    <strong>slideshow: false</strong>
+},</pre>
+        <p>See "Background script options" section above for where to add this code.</p>
+        </div>
+        <h2 class="toggler toggler-closed">Disable keyboard navigation</h2>
+        <div>
+        <pre>backgroundOptions = {
+    <strong>keyboard: false</strong>
+},</pre>
+        <p>See "Background script options" section above for where to add this code.</p>
+        </div>
+        <h2 class="toggler toggler-closed">Set background transition to Storm v1.0 effect</h2>
+        <div>
+        <pre>backgroundOptions = {
+    <strong>speedIn: 1250,
+    speedOut: 0,
+    sync: false</strong>
+},</pre>
+       <p>See "Background script options" section above for where to add this code.</p>
+       </div>
+      <h2 class="toggler toggler-closed">Different default background per page</h2>
+      <div>
+        <p>It's possible to set a different default background on a per page basis. You will need to find out the index of
+        the image in your list of background images that you added to <code>scripts.js</code>. The first background in your list
+        has the index 0, the second one has the index 1, the third image has index 2, and so on. Once you have the index, add the code
+        below to your page (use your number instead of 3):</p>
+        <pre>&lt;script&gt;var backgroundIndex = 3;&lt;/script&gt;</pre>
+        <p>Add your code <strong>before</strong> this line in the <code>&lt;head&gt;</code> of the page:</p>
+        <pre>&lt;script type="text/javascript" src="js/scripts.js"&gt;&lt;/script&gt;</pre>
+      </div>
+      <h2 class="toggler toggler-closed">Different backgrounds per page</h2>
+      <div>
+        <p>It's possible have an entirely different set of background images on a per page basis. The code you need to create the backgrounds
+        is the same as inside <code>scripts.js</code> but you need to add it in the <code>&lt;head&gt;</code> of page instead.</p>
+        <pre>&lt;script&gt;var backgrounds = [
+   'images/backgrounds/your_background1.jpg',
+   'images/backgrounds/your_background2.jpg',
+   'images/backgrounds/your_background3.jpg',
+   'images/backgrounds/your_background4.jpg',
+   'images/backgrounds/your_background5.jpg',
+   'images/backgrounds/your_background6.jpg'
+];&lt;/script&gt;</pre>
+        <p>Add your code <strong>before</strong> this line in the <code>&lt;head&gt;</code> of the page:</p>
+        <pre>&lt;script type="text/javascript" src="js/scripts.js"&gt;&lt;/script&gt;</pre>
+      </div>
+      <h2 class="toggler toggler-closed">Using a solid background colour instead of background images</h2>
+      <div>
+        <p>If you want to completely disable the background image functionality and use a solid colour
+        instead, there are 3 things you must do:</p>
+        <ul>
+            <li>1.  Remove all images from the list of images in scripts.js</li>
+            <li>2.  Change the background colour to suit in the CSS</li>
+        </ul>
+        <p>Each step is explained in more detail below.</p>
+        <h3>1.  Remove all images from the list of images in scripts.js</h3>
+        <p>Open <code>js/scripts.js</code> and near the top you will see the code where you set
+        the list of background images, as seen below.</p>
+        <pre>var backgrounds = [
+    'images/backgrounds/placeholder.jpg'
+],</pre>
+        <p>Remove the line in between the square brackets, so it becomes:</p>
+        <pre>var backgrounds = [
+],</pre>
+        <h3>2.  Change the background colour to suit in the CSS</h3>
+        <p>Open <code>css/styles.css</code> and search for the term <span class="find">body {</span>. On
+        the next line you will see the style that sets the current background colour (black):</p>
+        <pre>background: black;</pre>
+        <p>Change it to the colour you want, e.g.</p>
+        <pre>background: #D2D2D2;</pre>
+      </div>
+      <h2 class="toggler toggler-closed">Our live preview background images</h2>
+      <div>
+        <p>We found these images on <a class="popup">Flickr</a>, a good place to find great images for your website if you don't have
+        your own.  Here is a list of the backgrounds we used for the live preview, if you are interested in using them
+        on your site.</p>
+        <ul>
+            <li><strong>city.jpg</strong> - Paulo Barcellos Jr. - <a href="http://en.wikipedia.org/wiki/File:New_York_City_at_night_HDR.jpg">http://en.wikipedia.org/wiki/File:New_York_City_at_night_HDR.jpg</a></li>
+            <li><strong>corridor.jpg</strong> - Shane Gorski - <a href="http://www.flickr.com/photos/shanegorski/2670175525/">http://www.flickr.com/photos/shanegorski/2670175525/</a></li>
+            <li><strong>ocean.jpg</strong> - Kevin L. Cole - <a href="http://www.flickr.com/photos/kevcole/4183170759/">http://www.flickr.com/photos/kevcole/4183170759/</a></li>
+            <li><strong>rays.jpg</strong> - Shane Gorski - <a href="http://www.flickr.com/photos/shanegorski/2688072771/">http://www.flickr.com/photos/shanegorski/2688072771/</a></li>
+            <li><strong>sand.jpg</strong> - Zach Dischner - <a href="http://www.flickr.com/photos/zachd1_618/4886806652/">http://www.flickr.com/photos/zachd1_618/4886806652/</a></li>
+            <li><strong>stones.jpg</strong> - Zach Dischner - <a href="http://www.flickr.com/photos/zachd1_618/3979289262/">http://www.flickr.com/photos/zachd1_618/3979289262/</a></li>
+            <li><strong>splash.jpg</strong> - Dave Kirkham - <a href="http://www.flickr.com/photos/rwdave/3801554262/in/photostream/">http://www.flickr.com/photos/rwdave/3801554262/in/photostream/</a></li>
+            <li><strong>sunrise.jpg</strong> - Arturo Donate - <a href="http://www.flickr.com/photos/arturodonate/3362855614/">http://www.flickr.com/photos/arturodonate/3362855614/</a></li>
+            <li><strong>water.jpg</strong> - Horia Varlan - <a href="http://www.flickr.com/photos/horiavarlan/4785242349/">http://www.flickr.com/photos/horiavarlan/4785242349/</a></li>
+            <li><strong>nebula.jpg</strong> - NASA/ESA - <a href="http://en.wikipedia.org/wiki/File:Antennae_galaxies_xl.jpg">http://en.wikipedia.org/wiki/File:Antennae_galaxies_xl.jpg</a></li>
+            <li><strong>waterfall.jpg</strong> - ForestWander Nature Photography, www.ForestWander.com - <a href="http://en.wikipedia.org/wiki/File:Elakala_Waterfalls_Swirling_Pool_Mossy_Rocks.jpg">http://en.wikipedia.org/wiki/File:Elakala_Waterfalls_Swirling_Pool_Mossy_Rocks.jpg</a></li>
+        </ul>
+      </div>
+      <h2 class="toggler toggler-closed">How to hide the background slideshow controls</h2>
+      <div>
+        <p>If you want to hide the background slideshow controls, add the following CSS to the <code>css/styles.css</code> file:</p>
+        <pre>.storm-controls {
+    display: none;
+}</pre>
+      </div>
+      <h1><a name="page" id="page"></a>Page customisation<a class="top-link" href="#toc">Top</a></h1>
+      <h2 class="toggler toggler-closed">Changing the page content</h2>
+      <div>
+        <p>Open the file you want to change the content on and search for the term <span class="find">
+        class="content-inner"</span>, everything inside this div is the content of the page.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Changing the page layout</h2>
+      <div>
+        <p>There are a few different page layouts with different transparency options to choose from.</p>
+        <ul>
+            <li><strong>Note box</strong> - as seen in the home page</li>
+            <li><strong>Full width transparent</strong> - as seen in the about page</li>
+            <li><strong>Plain with transparent header</strong> - as seen in the blog, portfolio and
+            contact pages</li>
+        </ul>
+        <p>To use one of these styles on one of your pages, just copy one of the above pages and
+        rename it.  Then change the content of the page as described above to suit.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Changing the page content style</h2>
+      <div>
+        <p>In the <strong>about page</strong> we have added some example HTML that you may want to use in your content pages.
+        To use any of these styles in any of your pages, just copy the corresponding HTML to suit and add
+        your own content.</p>
+      </div>
+      <h1><a name="portfolio" id="portfolio"></a>Portfolio customisation<a class="top-link" href="#toc">Top</a></h1>
+      <h2 class="toggler toggler-closed">Choosing a portfolio type</h2>
+      <div>
+        <p>You have a choice between 5 JavaScript galleries:</p>
+        <ul>
+            <li><strong>Full screen gallery, with 6 layout options:</strong><ul>
+                <li>fullscreen-2columns.html</li>
+                <li>fullscreen-3columns.html</li>
+                <li>fullscreen-4columns.html</li>
+                <li>fullscreen-5columns.html</li>
+                <li>fullscreen-6columns.html</li>
+                <li>fullscreen-grid.html</li>
+            </ul></li>
+            <li><strong>Colorbox, with 6 layout options:</strong><ul>
+                <li>colorbox-2columns.html</li>
+                <li>colorbox-3columns.html</li>
+                <li>colorbox-4columns.html</li>
+                <li>colorbox-5columns.html</li>
+                <li>colorbox-6columns.html</li>
+                <li>colorbox-grid.html</li>
+            </ul></li>
+            <li><strong>Prettyphoto, with 6 layout options:</strong><ul>
+                <li>prettyphoto-2columns.html</li>
+                <li>prettyphoto-3columns.html</li>
+                <li>prettyphoto-4columns.html</li>
+                <li>prettyphoto-5columns.html</li>
+                <li>prettyphoto-6columns.html</li>
+                <li>prettyphoto-grid.html</li>
+            </ul></li>
+            <li><strong>Fancybox, with 6 layout options:</strong><ul>
+                <li>fancybox-2columns.html</li>
+                <li>fancybox-3columns.html</li>
+                <li>fancybox-4columns.html</li>
+                <li>fancybox-5columns.html</li>
+                <li>fancybox-6columns.html</li>
+                <li>fancybox-grid.html</li>
+            </ul></li>
+            <li><strong>Galleria:</strong><ul>
+                <li>galleria.html</li>
+            </ul></li>
+        </ul>
+        <p>Each gallery has a similar, but slightly different, method of setting up and adding images.
+        See the sections below for gallery specific help.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Full screen</h2>
+      <div>
+        <p>You will need to create 2 sizes of image for each of the images you want to display in your
+        portfolio, one for the thumbnail and one for the full screen size. We recommend that you make the
+        full screen image size <strong>1680px width</strong> by <strong>1050px height</strong> while keeping the file size under 500kb,
+        so that it looks great in most screen resolutions of your visitors. The full screen image
+        is automatically resized to fit inside the browser window, so sizes smaller than this may lose
+        quality if they are resized upwards to fit large screen resolutions. The size of the thumbnail is
+        different for each layout option, see the list below to find your size:</p>
+        <ul>
+            <li>2 column - 440px width by 275px height</li>
+            <li>3 column - 293px width by 183px height</li>
+            <li>4 column - 217px width by 136px height</li>
+            <li>5 column - 172px width by 108px height</li>
+            <li>6 column - 141px width by 88px height</li>
+            <li>Grid - 99px width by 62px height</li>
+        </ul>
+        <p>You should save your thumbnail images into the folder that corresponds to your chosen layout inside
+        <code>images/portfolio/</code>, for example if you are going with the 4 column layout, save all your
+        thumbnails into <code>images/portfolio/4column/</code>.  Save your full screen images into the folder
+        <code>images/portfolio/fullscreen/</code>.</p>
+        <p>Now open the HTML file for the gallery you have chosen (e.g. fullscreen-4columns.html) and search for
+        the term <span class="find">&lt;!--Portfolio content--&gt;</span>, this should take you to just before the list
+        of images. Each portfolio item looks similar to this:</p>
+        <pre>&lt;li class="one-portfolio-item"&gt;
+    &lt;a class="portfolio-thumb-link" href="images/portfolio/fullscreen/placeholder.jpg" rel="portfolio"&gt;
+        &lt;img src="images/portfolio/4column/placeholder.png" alt="" /&gt;
+    &lt;/a&gt;
+&lt;/li&gt;</pre>
+        <p>As you can see, it consists of an image surrounded by a link, the image is the thumbnail,
+        and the link points to the full screen image. You now need to change the
+        <code>src=""</code> attribute of the <code>&lt;img&gt;</code> to point to your thumbnail image. Then change the
+        <code>href=""</code> of the <code>&lt;a&gt;</code> to point to the full screen image. For example, your
+        code might look like this once you've made the change, if your thumbnail and full screen image were both
+        called photo1.jpg:</p>
+        <pre>&lt;li class="one-portfolio-item"&gt;
+    &lt;a class="portfolio-thumb-link" href="images/portfolio/fullscreen/photo1.jpg" rel="portfolio"&gt;
+        &lt;img src="images/portfolio/4column/photo1.jpg" alt="" /&gt;
+    &lt;/a&gt;
+&lt;/li&gt;</pre>
+        <p>Repeat these steps for each portfolio item you want to add.  You may need to delete some
+        placeholder images, so just delete the entire <code>&lt;li&gt;&lt;/li&gt;</code> surrounding it.</p>
+        <h3>Adding captions</h3>
+        <p>You can add captions to the image to display text when an image is displayed. To do this there are two steps.</p>
+        <h4>Step 1</h4>
+        <p>On the portfolio page, search in the code for <span class="find">&lt;!-- Portfolio captions --&gt;</span>, you'll end up inside a div which will contain the captions. Add a new div inside this to wrap the caption content and give
+          this div a unique id attribute. The &lt;h1&gt; and &lt;p&gt; tags already have styles inside the caption, so it's recommended to use them. Each caption you add should have it's own unique id attribute, for example <code>caption-1</code>, <code>caption-2</code> and so on. Example below.</p>
+          <pre>&lt;div class="portfolio-captions"&gt;
+  <strong>&lt;div id="caption-1"&gt;
+    &lt;h1&gt;This is a caption title&lt;/h1&gt;
+    &lt;p&gt;This is a caption description&lt;/p&gt;
+  &lt;/div&gt;</strong>
+&lt;/div&gt;</pre>
+        <h4>Step 2</h4>
+        <p>At the portfolio item that you want to add the caption to, add a new <code>data-caption</code> attribute to the &lt;a&gt; link surrounding the thumbnail, containing the hash character followed by the unique id of the attribute added in Step 1. Example below.</p>
+        <pre>&lt;li class="one-portfolio-item"&gt;
+    &lt;a class="portfolio-thumb-link" href="images/portfolio/fullscreen/photo1.jpg" rel="portfolio" <strong>data-caption="#caption-1"</strong>&gt;
+        &lt;img src="images/portfolio/4column/photo1.jpg" alt="" /&gt;
+    &lt;/a&gt;
+&lt;/li&gt;</pre>
+        <p>To add more captions just repeat Steps 1 &amp; 2. If in doubt see the fullscreen-2columns.html file for working captions.</p>
+        <h4>Setting the caption position per-image (optional)</h4>
+        <p>The position of the caption is determined by the <code>captionPosition</code> setting of the Serene script (see JavaScript options below). You can override the position per-image by adding a <code>data-caption-position</code>
+          attribute to the &lt;a&gt; link surrounding the thumbnail. Example below.</p>
+        <pre>&lt;li class="one-portfolio-item"&gt;
+    &lt;a class="portfolio-thumb-link" href="images/portfolio/fullscreen/photo1.jpg" rel="portfolio" data-caption="#caption-1" <strong>data-caption-position="left top"</strong>&gt;
+        &lt;img src="images/portfolio/4column/photo1.jpg" alt="" /&gt;
+    &lt;/a&gt;
+&lt;/li&gt;</pre>
+        <p>See the documentation below for the <code>captionPosition</code> setting for a list of valid values.</p>
+        <h3>Setting the bullet hover title</h3>
+          <p>To set the title that should be displayed when the user hovers the bullet for this image in the bullet navigation, add a new <code>data-title</code> attribute to the &lt;a&gt; link surrounding the thumbnail, containing the desired title. Example below.</p>
+          <pre>&lt;li class="one-portfolio-item"&gt;
+    &lt;a class="portfolio-thumb-link" href="images/portfolio/fullscreen/photo1.jpg" rel="portfolio" <strong>data-title="This is the image title"</strong>&gt;
+        &lt;img src="images/portfolio/4column/photo1.jpg" alt="" /&gt;
+    &lt;/a&gt;
+&lt;/li&gt;</pre>
+        <h3>JavaScript options (optional)</h3>
+        <p>The full screen gallery has a couple of options, in case you want to change them:</p>
+        <table class="options">
+            <tr><th>Key</th><th>Default</th><th>Description</th></tr>
+            <tr><td>speed</td><td>2000</td><td>Speed of the transition between background images, in milliseconds 1000 = 1 second</td></tr>
+            <tr><td>transition</td><td>'fade'</td><td>The transition animation. 'none', 'fade', 'fadeOutFadeIn', 'slideDown', 'slideRight', 'slideUp', 'slideLeft' 'carouselRight', 'carouselLeft'</td></tr>
+            <tr><td>fitLandscape</td><td>false</td><td>If landscape images should be locked to 100% width</td></tr>
+            <tr><td>fitPortrait</td><td>true</td><td>If portrait images should be locked to 100% height</td></tr>
+            <tr><td>fitAlways</td><td>false</td><td>Don't crop images at all</td></tr>
+            <tr><td>positionX</td><td>'center'</td><td>Where to position the image on the X axis. 'left', 'center', 'right'</td></tr>
+            <tr><td>positionY</td><td>'center'</td><td>Where to position the image on the Y axis. 'top', 'center', 'bottom'</td></tr>
+            <tr><td>easing</td><td>'swing'</td><td>The easing functions to use when transitioning (requires jQuery Easing plugin for anything other than swing)</td></tr>
+            <tr><td>slideshow</td><td>true</td><td>Enable the slideshow functionality (play/pause button)</td></tr>
+            <tr><td>slideshowAuto</td><td>true</td><td>Start the slideshow automatically</td></tr>
+            <tr><td>slideshowSpeed</td><td>5000</td><td>How long the slideshow stays on one image, in milliseconds</td></tr>
+            <tr><td>keyboard</td><td>true</td><td>Use the keyboard to control the background images. Left arrow = prev, right arrow = next, esc = close full screen mode.</td></tr>
+            <tr><td>captionPosition</td><td>'center bottom'</td><td>The default caption position. The first part is the X position which can be one of 'left', 'center', 'right'. The second part is the Y position which can be one of 'top', 'center', 'bottom'.</td></tr>
+            <tr><td>captionSpeed</td><td>600</td><td>The speed of the caption fade animation</td></tr>
+            <tr><td>bullets</td><td>true</td><td>Dislay bullet navigation</td></tr>
+            <tr><td>lowQuality</td><td>false</td><td>Turns on lower quality but higher performance transitions</td></tr>
+            <tr><td>errorBackground</td><td>''</td><td>Path to the background image shown if there is an error loading an image</td></tr>
+            <tr><td>onOpen</td><td>false</td><td>Callback that fires when the gallery opens.</td></tr>
+            <tr><td>onLoad</td><td>false</td><td>Callback that fires right before loading a background image.</td></tr>
+            <tr><td>onComplete</td><td>false</td><td>Callback that fires when the background image has finished loading (and animating).</td></tr>
+            <tr><td>onCleanup</td><td>false</td><td>Callback that fires when cleaning up before closing.</td></tr>
+            <tr><td>onClose</td><td>false</td><td>Callback that fires when the gallery closes.</td></tr>
+            <tr><td>captionEnhancement</td><td>function () {}</td><td>Caption enhancement function e.g. replace Cufon</td></tr>
+        </table>
+        <p>You can add these to the file <code>js/serene.js</code> as shown below:</p>
+        <pre>jQuery(document).ready(function($) {
+    $('.serene-portfolio a.portfolio-thumb-link').serene({
+        onOpen: $.fullscreen.unbindKeyboard,
+        onClose: $.fullscreen.bindKeyboard,
+        captionEnhancement: function ($caption) {
+          if (!!window.Cufon) {
+            Cufon.replace($('h1', $caption));
+          }
+        }<strong>,
+        slideshow: false,
+        keyboard: false</strong>
+    });
+});</pre>
+        <p><strong>Note:</strong> Each option line should end in a comma except the last line.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Colorbox</h2>
+      <div>
+        <p>You will need to create 2 sizes of image for each of the images you want to display in your
+        portfolio, one for the thumbnail and one for the popup size. We recommend that you make the
+        popup size have a maximum height of <strong>500px</strong>. As a guide, our placeholder images
+       are <strong>800px wide</strong> by <strong>500px high</strong>. The size of the thumbnail is
+        different for each layout option, see the list below to find your size:</p>
+        <ul>
+            <li>2 column - 440px width by 275px height</li>
+            <li>3 column - 293px width by 183px height</li>
+            <li>4 column - 217px width by 136px height</li>
+            <li>5 column - 172px width by 108px height</li>
+            <li>6 column - 141px width by 88px height</li>
+            <li>Grid - 99px width by 62px height</li>
+        </ul>
+        <p>You should save your thumbnail images into the folder that corresponds to your chosen layout inside
+        <code>images/portfolio/</code>, for example if you are going with the 4 column layout, save all your
+        thumbnails into <code>images/portfolio/4column/</code>.  Save your popup images into the folder
+        <code>images/portfolio/popup/</code>.</p>
+        <p>Now open the HTML file for the gallery you have chosen (e.g. colorbox-4columns.html) and search for
+        the term <span class="find">&lt;!--Portfolio content--&gt;</span>, this should take you to just before the list
+        of images. Each portfolio item looks similar to this:</p>
+        <pre>&lt;li class="one-portfolio-item"&gt;
+    &lt;a class="portfolio-thumb-link" href="images/portfolio/popup/placeholder.jpg" rel="portfolio"&gt;
+        &lt;img src="images/portfolio/4column/placeholder.png" alt="" /&gt;
+    &lt;/a&gt;
+&lt;/li&gt;</pre>
+        <p>As you can see, it consists of an image surrounded by a link, the image is the thumbnail,
+        and the link points to the popup image. You now need to change the
+        <code>src=""</code> attribute of the <code>&lt;img&gt;</code> to point to your thumbnail image. Then change the
+        <code>href=""</code> of the <code>&lt;a&gt;</code> to point to the popup image. For example, your
+        code might look like this once you've made the change, if your thumbnail and popup image were both
+        called photo1.jpg:</p>
+        <pre>&lt;li class="one-portfolio-item"&gt;
+    &lt;a class="portfolio-thumb-link" href="images/portfolio/popup/photo1.jpg" rel="portfolio"&gt;
+        &lt;img src="images/portfolio/4column/photo1.jpg" alt="" /&gt;
+    &lt;/a&gt;
+&lt;/li&gt;</pre>
+        <p>Repeat these steps for each portfolio item you want to add.  You may need to delete some
+        placeholder images, so just delete the entire <code>&lt;li&gt;&lt;/li&gt;</code> surrounding it.</p>
+        <h3>JavaScript options (optional)</h3>
+        <p>The Colorbox gallery has a lot of options, you can find out more from the <a class="popup" href="http://colorpowered.com/colorbox/">Colorbox website</a>.
+        The file you need to add any options to is <code>js/colorbox.js</code></p>
+      </div>
+      <h2 class="toggler toggler-closed">Fancybox</h2>
+      <div>
+        <p>You will need to create 2 sizes of image for each of the images you want to display in your
+        portfolio, one for the thumbnail and one for the popup size. We recommend that you make the
+        popup size have a maximum height of <strong>500px</strong>. As a guide, our placeholder images
+       are <strong>800px wide</strong> by <strong>500px high</strong>. The size of the thumbnail is
+        different for each layout option, see the list below to find your size:</p>
+        <ul>
+            <li>2 column - 440px width by 275px height</li>
+            <li>3 column - 293px width by 183px height</li>
+            <li>4 column - 217px width by 136px height</li>
+            <li>5 column - 172px width by 108px height</li>
+            <li>6 column - 141px width by 88px height</li>
+            <li>Grid - 99px width by 62px height</li>
+        </ul>
+        <p>You should save your thumbnail images into the folder that corresponds to your chosen layout inside
+        <code>images/portfolio/</code>, for example if you are going with the 4 column layout, save all your
+        thumbnails into <code>images/portfolio/4column/</code>.  Save your popup images into the folder
+        <code>images/portfolio/popup/</code>.</p>
+        <p>Now open the HTML file for the gallery you have chosen (e.g. fancybox-4columns.html) and search for
+        the term <span class="find">&lt;!--Portfolio content--&gt;</span>, this should take you to just before the list
+        of images. Each portfolio item looks similar to this:</p>
+        <pre>&lt;li class="one-portfolio-item"&gt;
+    &lt;a class="portfolio-thumb-link" href="images/portfolio/popup/placeholder.jpg" rel="portfolio"&gt;
+        &lt;img src="images/portfolio/4column/placeholder.png" alt="" /&gt;
+    &lt;/a&gt;
+&lt;/li&gt;</pre>
+        <p>As you can see, it consists of an image surrounded by a link, the image is the thumbnail,
+        and the link points to the popup image. You now need to change the
+        <code>src=""</code> attribute of the <code>&lt;img&gt;</code> to point to your thumbnail image. Then change the
+        <code>href=""</code> of the <code>&lt;a&gt;</code> to point to the popup image. For example, your
+        code might look like this once you've made the change, if your thumbnail and popup image were both
+        called photo1.jpg:</p>
+        <pre>&lt;li class="one-portfolio-item"&gt;
+    &lt;a class="portfolio-thumb-link" href="images/portfolio/popup/photo1.jpg" rel="portfolio"&gt;
+        &lt;img src="images/portfolio/4column/photo1.jpg" alt="" /&gt;
+    &lt;/a&gt;
+&lt;/li&gt;</pre>
+        <p>Repeat these steps for each portfolio item you want to add.  You may need to delete some
+        placeholder images, so just delete the entire <code>&lt;li&gt;&lt;/li&gt;</code> surrounding it.</p>
+        <h3>JavaScript options (optional)</h3>
+        <p>The Fancybox gallery has a lot of options, you can find out more from the <a class="popup" href="http://fancybox.net/">Fancybox website</a>.
+        The file you need to add any options to is <code>js/fancybox.js</code></p>
+      </div>
+      <h2 class="toggler toggler-closed">Prettyphoto</h2>
+      <div>
+        <p>You will need to create 2 sizes of image for each of the images you want to display in your
+        portfolio, one for the thumbnail and one for the popup size. We recommend that you make the
+        popup size have a maximum height of <strong>500px</strong>. As a guide, our placeholder images
+       are <strong>800px wide</strong> by <strong>500px high</strong>. The size of the thumbnail is
+        different for each layout option, see the list below to find your size:</p>
+        <ul>
+            <li>2 column - 440px width by 275px height</li>
+            <li>3 column - 293px width by 183px height</li>
+            <li>4 column - 217px width by 136px height</li>
+            <li>5 column - 172px width by 108px height</li>
+            <li>6 column - 141px width by 88px height</li>
+            <li>Grid - 99px width by 62px height</li>
+        </ul>
+        <p>You should save your thumbnail images into the folder that corresponds to your chosen layout inside
+        <code>images/portfolio/</code>, for example if you are going with the 4 column layout, save all your
+        thumbnails into <code>images/portfolio/4column/</code>.  Save your popup images into the folder
+        <code>images/portfolio/popup/</code>.</p>
+        <p>Now open the HTML file for the gallery you have chosen (e.g. prettyphoto-4columns.html) and search for
+        the term <span class="find">&lt;!--Portfolio content--&gt;</span>, this should take you to just before the list
+        of images. Each portfolio item looks similar to this:</p>
+        <pre>&lt;li class="one-portfolio-item"&gt;
+    &lt;a class="portfolio-thumb-link" href="images/portfolio/popup/placeholder.jpg" rel="prettyPhoto[portfolio]"&gt;
+        &lt;img src="images/portfolio/4column/placeholder.png" alt="" /&gt;
+    &lt;/a&gt;
+&lt;/li&gt;</pre>
+        <p>As you can see, it consists of an image surrounded by a link, the image is the thumbnail,
+        and the link points to the popup image. You now need to change the
+        <code>src=""</code> attribute of the <code>&lt;img&gt;</code> to point to your thumbnail image. Then change the
+        <code>href=""</code> of the <code>&lt;a&gt;</code> to point to the popup image. For example, your
+        code might look like this once you've made the change, if your thumbnail and popup image were both
+        called photo1.jpg:</p>
+        <pre>&lt;li class="one-portfolio-item"&gt;
+    &lt;a class="portfolio-thumb-link" href="images/portfolio/popup/photo1.jpg" rel="prettyPhoto[portfolio]"&gt;
+        &lt;img src="images/portfolio/4column/photo1.jpg" alt="" /&gt;
+    &lt;/a&gt;
+&lt;/li&gt;</pre>
+        <p>Repeat these steps for each portfolio item you want to add. You may need to delete some
+        placeholder images, so just delete the entire <code>&lt;li&gt;&lt;/li&gt;</code> surrounding it.</p>
+        <h3>JavaScript options (optional)</h3>
+        <p>The Prettyphoto gallery has a lot of options, you can find out more from the <a class="popup" href="http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/">Prettyphoto website</a>.
+        The file you need to add any options to is <code>js/prettyphoto.js</code></p>
+      </div>
+      <h2 class="toggler toggler-closed">Galleria</h2>
+      <div>
+        <p>You will need to create 2 sizes of image for each of the images you want to display in your
+        portfolio, one for the thumbnail and one for the popup size. We recommend that you make the
+        popup size have a maximum height of <strong>500px</strong>. As a guide, our placeholder images
+       are <strong>800px wide</strong> by <strong>500px high</strong>. The thumbnails are generated by
+       The size of the thumbnail is changed by the galleria code when it's run, however we used
+       a thumbnail size of <strong>99px width</strong> by <strong>62px height</strong> which works fine.</p>
+        <p>You should save your thumbnail images into the folder <code>images/portfolio/grid</code>.
+        Save your popup images into the folder <code>images/portfolio/popup/</code>.</p>
+        <p>Now open the HTML file for the Galleria, galleria.html and search for
+        the term <span class="find">&lt;!--Portfolio content--&gt;</span>, this should take you to just before the list
+        of images. Each portfolio item looks similar to this:</p>
+        <pre>&lt;li class="one-portfolio-item"&gt;
+    &lt;a class="portfolio-thumb-link" href="images/portfolio/popup/placeholder.jpg" rel="portfolio"&gt;
+        &lt;img src="images/portfolio/grid/placeholder.png" alt="" /&gt;
+    &lt;/a&gt;
+&lt;/li&gt;</pre>
+        <p>As you can see, it consists of an image surrounded by a link, the image is the thumbnail,
+        and the link points to the popup image. You now need to change the
+        <code>src=""</code> attribute of the <code>&lt;img&gt;</code> to point to your thumbnail image. Then change the
+        <code>href=""</code> of the <code>&lt;a&gt;</code> to point to the popup image. For example, your
+        code might look like this once you've made the change, if your thumbnail and popup image were both
+        called photo1.jpg:</p>
+        <pre>&lt;li class="one-portfolio-item"&gt;
+    &lt;a class="portfolio-thumb-link" href="images/portfolio/popup/photo1.jpg" rel="portfolio"&gt;
+        &lt;img src="images/portfolio/4column/photo1.jpg" alt="" /&gt;
+    &lt;/a&gt;
+&lt;/li&gt;</pre>
+        <p>Repeat these steps for each portfolio item you want to add. You may need to delete some
+        placeholder images, so just delete the entire <code>&lt;li&gt;&lt;/li&gt;</code> surrounding it.</p>
+        <h3>JavaScript options (optional)</h3>
+        <p>The Galleria gallery has a lot of options, you can find out more from the <a class="popup" href="http://galleria.aino.se/">Galleria website</a>.
+        The file you need to add any options to is <code>js/galleria.js</code></p>
+      </div>
+      <h1><a name="contact" id="contact"></a>Contact customisation<a class="top-link" href="#toc">Top</a></h1>
+      <h2 class="toggler toggler-closed">Contact form installation</h2>
+      <div>
+        <p>The contact form is a <strong>Quform</strong>, which is one of our CodeCanyon items that we sell separately.  The documentation for Quform is in the
+          <code>documentation/quform</code> folder, there is also a link to it at the bottom of this section.</p>
+          <p>To set up the form the only step you need to do is <strong>Step 4</strong> of the form installation guide which is to change the form to send enquiries to your email address.
+          I've copied these instructions below.</p>
+          <h3>4. Configure the form to send messages to your email address</h3>
+            <p>To configure the form, open <code>quform/process.php</code> and search for the code below.</p>
+            <pre>$config['recipients'] = '';</pre>
+            <p>Inside the single quotes enter the email address that you would like to recieve the submitted form data. For example:</p>
+      <pre>$config['recipients'] = 'me@example.com';</pre>
+      <p>To customise the form further or for form troubleshooting, see the <a href="quform" class="popup">form help</a>.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Customising the contact form</h2>
+      <div>
+      <p>To customise the form further or for form troubleshooting, see the <a href="quform" class="popup">form help</a>.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Changing the contact information</h2>
+      <div>
+        <p>In <code>contact.html</code>, search for the term <span class="find">&lt;!--Phone Number--&gt;</span>, you will
+        find the code for the phone number information and on the lines below that, you should find
+        the code for the fax number, email address and address.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Changing the map</h2>
+      <div>
+        <p>In <code>contact.html</code>, search for the term <span class="find">&lt;!--Map--&gt;</span>, you will find
+        the code for the map image and the link surrounding it. You can create your own map image, and
+        either save it in <code>images/mapexample.png</code> or change the <code>src=""</code> attribute
+        to point to your map image. The current map is <strong>395px width</strong> by <strong>254px height</strong>
+        You could also add in a link to your map on Google Maps for example
+        by changing the <code>href=""</code> of the link to point to your Google Map link.</p>
+      </div>
+      <h1><a name="ajax" id="ajax"></a>Ajax version customisation<a class="top-link" href="#toc">Top</a></h1>
+      <h2 class="toggler toggler-closed">General guidelines</h2>
+      <div>
+        <p>There are a couple of differences to be aware of when using the Ajax version compared to the
+        standard version.</p>
+        <p>You should use the file <code>index.ajax.html</code> and rename it to <code>index.html</code>.</p>
+        <p>The JavaScript file you should be making any changes to is <code>js/scripts.ajax.js</code>.</p>
+        <p>The only layout you need to change is in <code>index.html</code>, you don't need to copy any changes you
+        make to that file to other files.</p>
+        <p>The Ajax version still uses the standard version of the other files such as <code>about.html</code> but it only takes the content
+        areas from them. So you only need to change the content areas of these other files.</p>
+        <p>If you need to have links to other Ajax pages in the content areas of an Ajax page,
+        you should add the class <code>ajax-link</code> to the <code>&lt;a&gt;</code> tag e.g.:</p>
+        <pre>&lt;a class="ajax-link" href="blog-article.html"&gt;Read More&lt;/a&gt;</pre>
+        <p>When any pages are loaded through Ajax, only any content inside a div with the class <code>content-inner</code>
+        is actually shown from that page.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Adding your own JavaScript</h2>
+      <div>
+        <p>If you need to add your own JavaScript to one of the Ajax pages, the process differs from
+        normal.  You should add any external JavaScript files to the top of <code>index.html</code>.
+        You will not be able to use the standard <code>$(document).ready();</code> since this event
+        is not fired when a page is loaded through Ajax. We have added an ajax callback inside
+        <code>js/scripts.ajax.js</code> which is a function to simulate <code>$(document).ready();</code>.
+        If you search for the term <span class="find">var ajaxCallback</span> you will find the
+        start of this function. Add any JavaScript you need in there, this function is executed for
+        every page loaded via Ajax (including the index page).</p>
+      </div>
+      <h1><a name="third" id="third"></a>Third party scripts<a class="top-link" href="#toc">Top</a></h1>
+      <h2 class="toggler toggler-closed">Third party scripts</h2>
+      <div>
+        <ul>
+            <li><a href="http://jquery.com" class="popup">jQuery JavaScript library</a></li>
+            <li><a href="http://colorpowered.com/colorbox/" class="popup">Colorbox</a></li>
+            <li><a href="http://fancybox.net/" class="popup">Fancybox</a></li>
+            <li><a href="http://galleria.aino.se/" class="popup">Galleria</a></li>
+            <li><a href="http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/" class="popup">Prettyphoto</a></li>
+            <li><a href="https://github.com/carhartl/jquery-cookie" class="popup">jQuery Cookie</a></li>
+            <li><a href="http://cherne.net/brian/resources/jquery.hoverIntent.html" class="popup">HoverIntent</a></li>
+            <li><a href="http://users.tpg.com.au/j_birch/plugins/superfish/" class="popup">Superfish</a></li>
+            <li><a href="http://cufon.shoqolate.com/generate/" class="popup">Cufon</a></li>
+            <li><a href="http://jquery.kuzemchak.net/toggleval.php" class="popup">Toggleval</a></li>
+            <li><a href="http://benalman.com/projects/jquery-bbq-plugin/" class="popup">jQuery BBQ</a></li>
+            <li><a href="http://benalman.com/projects/jquery-hashchange-plugin/" class="popup">jQuery hashchange event</a></li>
+        </ul>
+      </div>
+      <h1><a name="#troubleshooting" id="#troubleshooting"></a>Troubleshooting<a class="top-link" href="#toc">Top</a></h1>
+      <h2 class="toggler toggler-closed">Background shows a black screen</h2>
+      <div>
+        <p>Most likely the background image does not exist, check the path to the image in <code>scripts.js</code> and check that it exists on the server.</p>
+      </div>
+      <h2 class="toggler toggler-closed">Poor background animation performance</h2>
+      <div>
+        <p>Old browsers may not be able to handle the animation between background images at the default settings.
+        You can change the JavaScript options (in <code>js/scripts.js</code> near the top) to be more forgiving as shown below.</p>
+        <pre>backgroundOptions = {
+    speedOut: 0,
+    sync: false
+},</pre>
+        <p>The options make it so that when you click next or prev, it hides the current background instantly
+        and then starts fading in the next background, instead of fading in and out
+        both images at the same.</p>
+      </div>
+      <h1><a name="support" id="support"></a>Further support<a class="top-link" href="#toc">Top</a></h1>
+      <p>For additional help you may contact us using the form on our <a class="popup" href="http://themeforest.net/user/ThemeCatcher">ThemeForest profile page</a>.  You must be logged
+      in to ThemeForest to see the contact form.</p>
+    </div><!-- /#content -->
+</div>
+</div>
+<!-- End Wrapper -->
+
+</body>
+</html>
