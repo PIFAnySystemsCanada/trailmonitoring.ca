@@ -30,7 +30,7 @@ function success_data($data)
 function created($message)
 {
     http_response_code(201);
-    echo json_encode(array("message" => $message, "success" => "false"));
+    echo json_encode(array("message" => $message, "success" => "true"));
 }
 
 function failure($message, $code)
