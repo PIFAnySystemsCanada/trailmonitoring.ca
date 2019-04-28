@@ -26,6 +26,7 @@ try
     $photos->id = $data->id;
     
     // set photos property values
+    $photos->camera_id = $data->camera_id;
     $photos->filename = $data->filename;
     $photos->directory = $data->directory;
     $photos->deleted = $data->deleted;
@@ -36,6 +37,7 @@ try
     {
         throw new DataException("data error: unable to update photo");
     }
+    success("photo with id " . $photos->id . " updated");
 }
 catch (DataException $e)
 {

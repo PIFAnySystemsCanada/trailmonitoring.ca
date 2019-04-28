@@ -58,6 +58,7 @@ try
         extract($row);
         $photos_item=array(
             "id" => $id,
+            "camera_id" => $camera_id,
             "filename" => $filename,
             "directory" => $directory,
             "createtime" => $createtime,

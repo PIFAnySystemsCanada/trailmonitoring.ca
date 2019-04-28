@@ -22,6 +22,7 @@ try
 
     // make sure data is not empty
     if (
+        ($data->camera_id == 0) ||
         empty($data->filename) ||
         empty($data->directory)
        )
@@ -35,6 +36,7 @@ try
     $photos = new Photos($db);
     
     // set photos property values
+    $photos->camera_id = $data->camera_id;
     $photos->filename = $data->filename;
     $photos->directory = $data->directory;
     $photos->deleted = false;

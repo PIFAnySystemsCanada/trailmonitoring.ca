@@ -7,6 +7,7 @@ class Photos{
  
     // object properties
     public $id;
+    public $camera_id;
     public $filename;
     public $directory;
     public $createtime;
@@ -23,7 +24,7 @@ class Photos{
     
         // select all query
         $query = "SELECT
-                    p.id, p.filename, p.createtime, p.deleted, p.data
+                    p.id, p.camera_id, p.filename, p.createtime, p.deleted, p.data
                 FROM
                     " . $this->table_name . " p ";
     
@@ -43,16 +44,18 @@ class Photos{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    filename=:filename, directory=:directory, createtime=NOW()";
+                    camera_id=:camera_id, filename=:filename, directory=:directory, createtime=NOW()";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
     
         // sanitize
+        $this->camera_id=htmlspecialchars(strip_tags($this->camera_id));
         $this->filename=htmlspecialchars(strip_tags($this->filename));
         $this->directory=htmlspecialchars(strip_tags($this->directory));
     
         // bind values
+        $stmt->bindParam(":camera_id", $this->camera_id);
         $stmt->bindParam(":filename", $this->filename);
         $stmt->bindParam(":directory", $this->directory);
     
@@ -71,7 +74,7 @@ class Photos{
     
         // query to read single record
         $query = "SELECT
-                    p.id, p.filename, p.directory, p.createtime, p.deleted, p.data
+                    p.id, p.camera_id, p.filename, p.directory, p.createtime, p.deleted, p.data
                 FROM
                     " . $this->table_name . " p
                 WHERE
@@ -92,6 +95,7 @@ class Photos{
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
     
         // set values to object properties
+        $this->camera_id = $row['camera_id'];
         $this->filename = $row['filename'];
         $this->directory = $row['directory'];
         $this->createtime = $row['createtime'];
@@ -106,10 +110,11 @@ class Photos{
         $query = "UPDATE
                     " . $this->table_name . "
                 SET
+                camera_id = :camera_id,
                 filename = :filename,
                 directory = :directory,
                 deleted = :deleted,
-                data = :data,
+                data = :data
                 WHERE
                     id = :id";
     
@@ -117,6 +122,7 @@ class Photos{
         $stmt = $this->conn->prepare($query);
     
         // sanitize
+        $this->camera_id=htmlspecialchars(strip_tags($this->camera_id));
         $this->filename=htmlspecialchars(strip_tags($this->filename));
         $this->directory=htmlspecialchars(strip_tags($this->directory));
         $this->deleted=htmlspecialchars(strip_tags($this->deleted));
@@ -133,6 +139,7 @@ class Photos{
         }
 
         // bind new values
+        $stmt->bindParam(':camera_id', $this->camera_id);
         $stmt->bindParam(':filename', $this->filename);
         $stmt->bindParam(':directory', $this->directory);
         $stmt->bindParam(':deleted', $this->deleted);
@@ -194,7 +201,7 @@ class Photos{
         $datestring = $date->format('Y-m-d');
         // select all query
         $query = "SELECT
-                    p.id, p.filename, p.directory, p.createtime, p.deleted, p.data
+                    p.id, p.camera_id, p.filename, p.directory, p.createtime, p.deleted, p.data
                 FROM
                     " . $this->table_name . " p
                 WHERE
@@ -227,7 +234,7 @@ class Photos{
     {
         // select all query
         $query = "SELECT
-                    p.id, p.filename, p.directory, p.createtime, p.deleted, p.data
+                    p.id, p.camera_id, p.filename, p.directory, p.createtime, p.deleted, p.data
                 FROM
                     " . $this->table_name . " p
                 WHERE
@@ -251,7 +258,7 @@ class Photos{
     
         // select all query
         $query = "SELECT
-                    p.id, p.filename, p.directory, p.createtime, p.deleted, p.data
+                    p.id, p.camera_id, p.filename, p.directory, p.createtime, p.deleted, p.data
                 FROM
                     " . $this->table_name . " p
                 WHERE

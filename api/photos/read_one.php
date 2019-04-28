@@ -40,6 +40,7 @@ if (!empty($photos->filename))
     // create array
     $photos_arr = array(
         "id" =>  $photos->id,
+        "camera_id" => $photos->camera_id,
         "filename" => $photos->filename,
         "directory" => $photos->directory,
         "createtime" => $photos->createtime,

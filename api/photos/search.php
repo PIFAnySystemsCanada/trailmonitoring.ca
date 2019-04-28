@@ -53,6 +53,7 @@ try
 
         $photos_item=array(
             "id" => $id,
+            "camera_id" => html_entity_decode($camera_id), 
             "filename" => html_entity_decode($filename),
             "directory" => html_entity_decode($directory),
             "createtime" => $createtime,
