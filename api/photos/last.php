@@ -28,6 +28,10 @@ try
     {
         throw new DataException("Count value is not valid");
     }
+    if (($data->camera_id < -1) || (($data->camera_id > 10)))
+    {
+        throw new DataException("Camera Id value is not valid");
+    }
     
     // instantiate database and photos object
     $database = new Database();
@@ -38,7 +42,7 @@ try
     
     // read photoss will be here
     // query photoss
-    $stmt = $photos->readlast($data->count);
+    $stmt = $photos->readlast($data->camera_id, $data->count);
     $num = $stmt->rowCount();
     
     // check if more than 0 record found

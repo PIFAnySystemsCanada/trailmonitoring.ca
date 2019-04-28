@@ -192,7 +192,7 @@ class Photos{
      * 2 - 2 days ago
      * etc...
      */
-    function readlist($day)
+    function readlist($camera, $day)
     {
         // Figure out the timestamps
         $date = new DateTime();
@@ -205,7 +205,7 @@ class Photos{
                 FROM
                     " . $this->table_name . " p
                 WHERE
-                    DATE(p.createtime) = ? AND p.deleted = false
+                    DATE(p.createtime) = ? AND p.camera_id = ? AND p.deleted = false
                 ORDER BY
                     p.createtime ASC";
 
@@ -214,6 +214,7 @@ class Photos{
     
         // bind
         $stmt->bindParam(1, $datestring);
+        $stmt->bindParam(2, $camera);
     
         // execute query
         $stmt->execute();
@@ -230,7 +231,7 @@ class Photos{
      * 2 - 2 days ago
      * etc...
      */
-    function readlast($count)
+    function readlast($camera, $count)
     {
         // select all query
         $query = "SELECT
@@ -238,7 +239,7 @@ class Photos{
                 FROM
                     " . $this->table_name . " p
                 WHERE
-                    p.deleted = false
+                    p.camera_id = " . $camera . " AND p.deleted = false
                 ORDER BY
                     p.createtime DESC
                 LIMIT

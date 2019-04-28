@@ -24,6 +24,11 @@ try
         throw new DataException("Day value is not valid");
     }
     
+    if (($data->camera_id < -1) || (($data->camera_id > 10)))
+    {
+        throw new DataException("Camera Id value is not valid");
+    }
+
     // instantiate database and photos object
     $database = new Database();
     $db = $database->getConnection();
@@ -33,7 +38,7 @@ try
     
     // read photoss will be here
     // query photoss
-    $stmt = $photos->readlist($data->day);
+    $stmt = $photos->readlist($data->camera_id, $data->day);
     $num = $stmt->rowCount();
     
     // check if more than 0 record found
