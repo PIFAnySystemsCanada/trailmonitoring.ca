@@ -14,14 +14,10 @@ include_once '../shared/utilities.php';
  
 try
 {
-    $data = json_decode(file_get_contents("php://input"));
-
-    check_api_key($data->api_key);
-
-    if (empty($data->id))
-    {
-        throw new InvalidArgumentException("Missing data items");
-    }
+    $data_string = file_get_contents("php://input");
+    $required = ['api_key', 'id'];
+    $data = validate_data($data_string, $required);
+    check_api_key($data);
 
     $database = new Database();
     $db = $database->getConnection();

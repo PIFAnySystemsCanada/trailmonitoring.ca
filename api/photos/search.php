@@ -15,9 +15,10 @@ include_once '../shared/utilities.php';
 try
 {
     // get posted data (hides the API key better than a get)
-    $data = json_decode(file_get_contents("php://input"));
-
-    check_api_key($data->api_key);
+    $data_string = file_get_contents("php://input");
+    $required = ['api_key', 'keywords'];
+    $data = validate_data($data_string, $required);
+    check_api_key($data);
 
     // instantiate database and photos object
     $database = new Database();

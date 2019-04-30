@@ -16,13 +16,9 @@ try
 {
     // get posted data
     $data_string = file_get_contents("php://input");
-    if (empty($data_string))
-    {
-        throw new DataException("POST data required");
-    }
-    $data = json_decode($data_string);
-
-    check_api_key($data->api_key);
+    $required = ['api_key', 'camera_id', 'count'];
+    $data = validate_data($data_string, $required);
+    check_api_key($data);
 
     if (($data->count < -1) || (($data->count > 50)))
     {

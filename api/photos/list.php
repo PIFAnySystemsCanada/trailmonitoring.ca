@@ -15,9 +15,10 @@ include_once '../objects/photos.php';
 try
 {
     // get posted data
-    $data = json_decode(file_get_contents("php://input"));
-
-    check_api_key($data->api_key);
+    $data_string = file_get_contents("php://input");
+    $required = ['api_key', 'camera_id', 'day'];
+    $data = validate_data($data_string, $required);
+    check_api_key($data);
 
     if (($data->day < -1) || (($data->day > 10)))
     {

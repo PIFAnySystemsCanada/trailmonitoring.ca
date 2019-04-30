@@ -163,7 +163,7 @@ class Photos{
                 SET
                 deleted = true,
                 WHERE
-                    id = :id";
+                    id = ?";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
