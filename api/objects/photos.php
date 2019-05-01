@@ -161,7 +161,7 @@ class Photos{
         $query = "UPDATE
                     " . $this->table_name . "
                 SET
-                deleted = true,
+                deleted = true
                 WHERE
                     id = ?";
     
@@ -182,6 +182,37 @@ class Photos{
         return false;
         
     }
+
+    function delete_by_name()
+    {
+    
+        $query = "UPDATE
+                    " . $this->table_name . "
+                SET
+                deleted = true
+                WHERE
+                    filename = :filename AND directory = :directory";
+    
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+    
+        // sanitize
+        $this->filename=htmlspecialchars(strip_tags($this->filename));
+        $this->directory=htmlspecialchars(strip_tags($this->directory));
+    
+        // bind id of record to delete
+        $stmt->bindParam(':filename', $this->filename);
+        $stmt->bindParam(':directory', $this->directory);
+    
+        // execute query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
+        
+    }
+
 
     /**
      * Get a list of files based on the day of the week
