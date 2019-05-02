@@ -17,7 +17,7 @@ try
 {
     // get posted data
     $data_string = file_get_contents("php://input");
-    $required = ['api_key', 'camera_id', 'filename', 'directory'];
+    $required = ['api_key', 'camera_id', 'filename', 'directory', 'data'];
     $data = validate_data($data_string, $required);
     check_api_key($data);
 
@@ -40,6 +40,7 @@ try
     $photos->camera_id = $data->camera_id;
     $photos->filename = $data->filename;
     $photos->directory = $data->directory;
+    $photos->data = $data->data;
     $photos->deleted = false;
 
     // Check the API Key

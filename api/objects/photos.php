@@ -44,7 +44,7 @@ class Photos{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    camera_id=:camera_id, filename=:filename, directory=:directory, createtime=NOW()";
+                    camera_id=:camera_id, filename=:filename, directory=:directory, data=:data, createtime=NOW()";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -53,11 +53,13 @@ class Photos{
         $this->camera_id=htmlspecialchars(strip_tags($this->camera_id));
         $this->filename=htmlspecialchars(strip_tags($this->filename));
         $this->directory=htmlspecialchars(strip_tags($this->directory));
+        $this->data=htmlspecialchars(strip_tags($this->data));
     
         // bind values
         $stmt->bindParam(":camera_id", $this->camera_id);
         $stmt->bindParam(":filename", $this->filename);
         $stmt->bindParam(":directory", $this->directory);
+        $stmt->bindParam(":data", $this->data);
     
         // execute query
         if($stmt->execute()){
