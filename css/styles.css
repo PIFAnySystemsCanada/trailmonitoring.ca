@@ -977,11 +977,11 @@ a.min:hover {
 }
 .fullscreen-caption h1, .serene-caption h1 {
 	background: url(../images/backgrounds/transparent/plain-dark-90.png) repeat left top;
-    margin-bottom: 5px;
+    margin-bottom: 25px;
     padding: 10px 20px;
-    font-size: 25px;
+    font-size: 16px;
     font-weight: normal;
-    line-height: 32px;
+    line-height: 26px;
     float: left;
     clear: both;
     position: relative;
