@@ -17,6 +17,9 @@
 <script type="text/javascript" src="js/scripts.js"></script>
 <script type="text/javascript" src="js/galleria/galleria.js"></script>
 <script type="text/javascript" src="js/galleria.js"></script>
+<script type="text/javascript">
+    window.page_id = 1;
+</script>
 </head>
 <body>
 <div id="nojs-background">
@@ -43,10 +46,11 @@
                 <li class="about"><a href="about.html">About</a></li>
                 <li class="portfolio"><a href="#" onclick="return false;">Photo Gallery</a>
                     <ul>
-                        <li><a href="galleria.html">Yesterday's Photos</a></li>
-                        <li><a href="galleria.html">Photos from 2 days ago</a></li>
-                        <li><a href="galleria.html">Photos from 3 days ago</a></li>
-                    </ul>
+                        <li><a href="galleria.html?id=1">Yesterday's Photos</a></li>
+                        <li><a href="galleria.html?id=2">Photos from 2 days ago</a></li>
+                        <li><a href="galleria.html?id=3">Photos from 3 days ago</a></li>
+                        <li><a href="galleria.html?id=4">Photos from 4 days ago</a></li>
+                        </ul>
                 </li>
                 <li class="contact"><a href="contact.html">Contact</a></li>
             </ul>
@@ -85,7 +89,7 @@
         <div class="content-inner">
 
             <!--Transparent Header-->
-            <div class="transparent-header">
+            <div id="gallery-title" class="transparent-header">
                 <h1>Galleria</h1>
                 <h2>Image gallery</h2>
             </div>
@@ -93,11 +97,11 @@
 
             <!--Portfolio content-->
             <div class="plain-black clearfix">
-                <div class="portfolio galleria-portfolio grid-portfolio clearfix">
+                <div id="gallery-items" class="portfolio galleria-portfolio grid-portfolio clearfix">
                     <ul>
                         <li class="one-portfolio-item">
                             <a class="portfolio-thumb-link" href="images/portfolio/popup/placeholder.png" rel="portfolio">
-                                <img src="images/portfolio/grid/placeholder.png" alt="" />
+                                <img src="images/portfolio/popup/placeholder.png" alt="" />
                             </a>
                         </li>
                         <li class="one-portfolio-item">

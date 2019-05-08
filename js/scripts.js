@@ -50,8 +50,6 @@
                 backgrounds.push(background)
             });
             window.backgroundImages = backgrounds;
-            var bgs = JSON.stringify(backgrounds);
-            console.log(bgs);
 
             $.fullscreen(
                 $.extend(backgroundOptions, {
