@@ -97,17 +97,17 @@
             <p>The solar charger is based on a 20W Colman solar panel from KW Surplus driving a Chinese charge controller picked up from Amazon. It's not the greatest setup, but the upgrade to an improved solar charge controller seems to allow the battery to be maintained.</p>
             <p>The battery is a 12V deep cycle gel cell battery. The system runs on 12V.</p>
             <h3>Camera</h3>
-            <p>The camera is based in a Raspberry PI W connected to a Raspberry camera. To that board is a one wire temperature sensor and a I2C light sensor. The light sensors allows the Raspberry PI to detect the amount of light and adjust the camera's exposure. </p>
-            <h2>Future Direction: Step 1</h2>
-            <p>The current version is being upgraded to use I2C voltage monitor to check the battery voltage. We want to know when the battery is getting to low and needs some help. We've had the SD card in the Raspberry PI get chewed up when the battery drops out. </p>
-            <p>Battery, temperature, and light information will be uploaded on a regular basis to <a hef="https://thingspeak.com/channels/738696">ThingSpeak</a> to allow us to monitor the condition of the unit remotely</p>
-            <p>Future versions will be enhanced with remote RF sensor units that will collect temperature, humidity, and soil moisture readings. This should allow use to determine if the trails are muddy or not. We will allow be looking into infrared sensors to detect mud and ice directly.</p>
+            <p>The camera is based in a Raspberry PI W connected to a Raspberry camera. To that board is a one wire temperature sensor and a I2C light sensor. The light sensors allows the Raspberry PI to detect the amount of light and adjust the camera's exposure. An I2C voltage sensor is used to check the battery voltage. 
+                Battery, temperature, and light information is posted to our <a href="https://thingspeak.com/channels/738696">ThinkSpeak Channel</a>We want to know when the battery is getting to low and needs some help. We've had the SD card in the Raspberry PI get chewed up when the battery drops out. The voltage sensor allows
+                Raspberry PI to text us when there is a low voltage condition and shutdown the system before the solar charge controller pulls the power to the device.</p>
+            <h2>Future Direction: Step 1 - Remote Sensors</h2>
+            <p>Future versions will be enhanced with remote RF sensor units that will collect temperature, humidity, and soil moisture readings. Using these LORA radio sensors, we will be able to determine if the trails are muddy or not. We will allow be looking into infrared sensors to detect mud and ice directly for winter trail conditions.</p>
             <h2>Future Direction: Step 2 - Artificial Intelligence</h2>
-            <P>The purpose of the camera images is more than photos of the trails. We would like to be able to count the number of riders in the Hydrocut using only imaging technology. The camera system will be updated to use motion detection to send riders in the forest and snap their photo. 
+            <P>The purpose of the camera images is more than photos of the trails. We would like to be able to count the number of riders in the Hydrocut using only imaging technology. The camera system will be updated to use motion detection to sense riders in the forest and snap their photo. 
             The images collected by the motion detection system will be fed into TensorFlow to train the AI to detect a ride, a hiker, wildlife, etc. and get an accurate count of the entities in the forest.</P>
             <h2>Why Geese?</h2>
             <p>Currently, the solar charger and the camera hardware in development. While we had the camera in the forest for a few weeks, it was a pain to hike 30 mins into the forest to make repairs and adjustments. The camera now resides in a team mambers backyard where geese congigate.
-            It makes for an easy place to get at when things fail or stop working.
+            It makes for an easy place to get at when things fail or stop working. We can practice using images to train our AI system using Geese.
             </p>
             <h2>We Need Help</h2>
             <p>If you are interested in participating in the project, we would use help with hardware design, printed circuit board design, software project. We are willing to work with those who have time to learn programming. Willingness to work with Linux, Raspberry PI, Ardrino, Python, and C are skills we can use/offer.</p>
