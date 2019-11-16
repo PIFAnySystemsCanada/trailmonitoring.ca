@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>KW GeeseCam</title>
+<title>KW TrailCam</title>
 
 <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
@@ -28,7 +28,7 @@
     <div id="header-inner">
 
       <!--Logo-->
-      <div class="logo"><a href="index.html"><img src="images/kwgeesecam-logo.png" width="60px" title="KW GeeseCam" alt="Logo" /></a></div>
+      <div class="logo"><a href="index.html"><img src="images/mtbtraillogo.png" width="60px" title="KW TrailCam" alt="Logo" /></a></div>
       <!--End Logo-->
 
       <!-- Nav -->
@@ -83,8 +83,8 @@
     <div class="content-inner">
       <!--About us content-->
       <div class="full-width-transparent clearfix">
-        <h1>About KW GeeseCam</h1>
-        <h2>Hydrocat/GeeseCam Project</h2>
+        <h1>About KW TrailCam</h1>
+        <h2>Hydrocat/TrailCam Project</h2>
 
         <!--Heading tag examples-->
         <div class="clearfix bottom-breaker">
@@ -92,6 +92,8 @@
             <p>The motivation for the project was to be able to see and find out the trail conditions in the Hydrocut without having to actually go into the forest. While we can make assumptions about what the trails are like, we really can't know for sure.
                 The project got started when one of the developers obtained a 4G modem from Worldine Canada for testing. Worldline is introducing a new 4G service.
             </p>
+            <h2>The Story</h2>
+            <P>Full details of the project and others I've worked on can be found online in IOT Magazine. Read about the project in the story <a href="https://theiotmagazine.com/why-eat-raspberry-pi-when-arduino-fruit-will-do-3ebfd8724d" target="_blank">Why Eat Raspberry PI when Arduino Fruit will do</a> on Medium.com</P>
             <h2>Technology</h2>
             <h3>Solar Charger</h3>
             <p>The solar charger is based on a 20W Colman solar panel from KW Surplus driving a Chinese charge controller picked up from Amazon. It's not the greatest setup, but the upgrade to an improved solar charge controller seems to allow the battery to be maintained.</p>
@@ -102,16 +104,20 @@
             to the web host for storage.
             <h3>Camera</h3>
             <p>The camera is based in a Raspberry PI W connected to a Raspberry camera. To that board is a one wire temperature sensor and a I2C light sensor. The light sensors allows the Raspberry PI to detect the amount of light and adjust the camera's exposure. An I2C voltage sensor is used to check the battery voltage. 
-                Battery, temperature, and light information is posted to our <a href="https://thingspeak.com/channels/738696">ThinkSpeak Channel</a>We want to know when the battery is getting to low and needs some help. We've had the SD card in the Raspberry PI get chewed up when the battery drops out. The voltage sensor allows
+                Battery, temperature, and light information is posted to our <a href="https://thingspeak.com/channels/738696" target="_blank">ThinkSpeak Channel</a>. We want to know when the battery is getting to low and needs some help. We've had the SD card in the Raspberry PI get chewed up when the battery drops out. The voltage sensor allows
                 Raspberry PI to text us when there is a low voltage condition and shutdown the system before the solar charge controller pulls the power to the device.</p>
-            <h2>Future Direction: Step 1 - Remote Sensors</h2>
-            <p>Future versions will be enhanced with remote RF sensor units that will collect temperature, humidity, and soil moisture readings. Using these LORA radio sensors, we will be able to determine if the trails are muddy or not. We will allow be looking into infrared sensors to detect mud and ice directly for winter trail conditions.</p>
+            <h2>Future Direction: Step 1 - Dump the RPi</h2>
+            <P>The Raspberry PI W used for the device has proven to be unreliable. The board has died completely once and had to be replaced. The WIFI chip routinely looses connection with the internet and the board has to be rebooted to get it to 
+                respond. Additionally, the whole idea of running a completely linux operating system to run one python script seems silly. We are considering using a ESP32 or Maixduino board as a replacement.
+            </P>
             <h2>Future Direction: Step 2 - Artificial Intelligence</h2>
             <P>The purpose of the camera images is more than photos of the trails. We would like to be able to count the number of riders in the Hydrocut using only imaging technology. The camera system will be updated to use motion detection to sense riders in the forest and snap their photo. 
             The images collected by the motion detection system will be fed into TensorFlow to train the AI to detect a ride, a hiker, wildlife, etc. and get an accurate count of the entities in the forest.</P>
-            <h2>Why Geese?</h2>
-            <p>Currently, the solar charger and the camera hardware in development. While we had the camera in the forest for a few weeks, it was a pain to hike 30 mins into the forest to make repairs and adjustments. The camera now resides in a team mambers backyard where geese congigate.
-            It makes for an easy place to get at when things fail or stop working. We can practice using images to train our AI system using Geese.
+            <h2>Future Direction: Step 3 - Remote Sensors</h2>
+            <p>Future versions will be enhanced with remote RF sensor units that will collect temperature, humidity, and soil moisture readings. Using these LORA radio sensors, we will be able to determine if the trails are muddy or not. We will allow be looking into infrared sensors to detect mud and ice directly for winter trail conditions.</p>
+            <h2>Where We Are Now</h2>
+            <p>Currently, the solar charger and the camera hardware in development. While we had the camera in the forest for a few weeks, it was a pain to hike 30 mins into the forest to make repairs and adjustments. The camera now resides my backyard.
+            It makes for an easy place to get at when things fail or stop working. When the device starts to become reliable and work for a month without fail, we will consider redeployment into the forest.
             </p>
             <h2>We Need Help</h2>
             <p>If you are interested in participating in the project, we would use help with hardware design, printed circuit board design, software project. We are willing to work with those who have time to learn programming. Willingness to work with Linux, Raspberry PI, Ardrino, Python, and C are skills we can use/offer.</p>
@@ -130,7 +136,7 @@
             <p>This first version ran off an old car battery and a cheap solar panel. It managed to last about two weeks before the battery died and the Raspberry PI gave up.</p>
             </div>
             <div class="two-of-two">
-            <h3>Geese Webcam</h3>
+            <h3>Trail Webcam</h3>
             <img class="img-right" src="images/solarpanel-1.jpg" width="200" alt="solarpanel" />
             <p>The second version used an improved gel cell battery and was moved to one of the co-developers back yard to make getting at the device easier - no 30 min hike into the forest.</p>
             <p>The unit lasted about a week again before the battery died. The unit is currently being upgraded and in the meantime the solar charge controller was replaced with a better model. The battery appears to be lasting.</p>
@@ -150,7 +156,7 @@
     <div class="footer-inside clearfix">
 
       <!--Footers Left Column-->
-      <div class="foot-left-col">Copyright &copy; 2019 <a href="http://kwgeesecam.ca" class="white-link">KWGeeseCam.ca</a> </div>
+      <div class="foot-left-col">Copyright &copy; 2019 <a href="http://kwtrailcam.ca" class="white-link">KWTrailCam.ca</a> </div>
       <!--End Footers Left Column-->
 
       <!--Footers Right Column-->
@@ -164,8 +170,8 @@
         <!--Hidden pop out boxes - Social icons-->
         <div class="footer-pop-out-box social-pop-out-box">
             <div class="clearfix">
-                <div class="one-icon-wrap"><a href="https://facebook.com/kwgeesecam"><img src="images/social-icons/facebook.png" width="32" height="32" alt="Facebook" /></a></div>
-                <div class="one-icon-wrap"><a href="https://twitter.com/kwgeesecam"><img src="images/social-icons/twitter.png" width="32" height="32" alt="Twitter" /></a></div>
+                <div class="one-icon-wrap"><a href="https://facebook.com/kwtrailcam"><img src="images/social-icons/facebook.png" width="32" height="32" alt="Facebook" /></a></div>
+                <div class="one-icon-wrap"><a href="https://twitter.com/kwtrailcam"><img src="images/social-icons/twitter.png" width="32" height="32" alt="Twitter" /></a></div>
             </div>
         </div>
 
