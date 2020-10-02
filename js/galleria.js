@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
     var urlParams = new URLSearchParams(window.location.search);
-    var date_id = 1;
+    var date_id = 0;
     if (urlParams.has('id'))
     {
         var id = urlParams.get('id');
