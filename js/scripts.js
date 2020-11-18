@@ -6,7 +6,7 @@
 	},
 
 	// Twitter username
-	twitterUsername = 'KWGeeseCam',
+	twitterUsername = 'KWTrailCam',
 
 	// Number tweets to show, set to 0 to disable
 	tweetCount = 3,
@@ -59,7 +59,7 @@
                     alwaysShowCaptions: true,
                     captionPosition: "right bottom",                  
                     captionSpeed: 1000,
-                    errorBackground: "images/backgrounds/webcam-1.jpg",
+                    errorBackground: "images/webcam/trailcam-1.png",
                     captionEnhancement: function ($caption) {
                         if (!!window.Cufon) {
                             Cufon.replace($('h1', $caption));
