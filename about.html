@@ -14,11 +14,12 @@
 <![endif]-->
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/plugins.js"></script>
-<script type="text/javascript" src="js/scripts.js"></script>
+<script type="text/javascript" src="data/images.js"></script>
+<!--<script type="text/javascript" src="js/scripts.js"></script>-->
 </head>
 <body>
 <div id="nojs-background">
-    <img src="images/backgrounds/webcam-1.jpg" alt="" /><!-- Non-JavaScript background -->
+    <img src="images/webcam/trailcam-7.png" alt="" /><!-- Non-JavaScript background -->
 </div>
 <!--Start Outside-->
 <div class="outside"><a name="top"></a>
@@ -39,14 +40,12 @@
             <ul id="horz-nav-ul" class="sf-menu">
                 <li class="home"><a href="index.html">Home</a></li>
                 <li class="about"><a href="about.html">About</a></li>
-                <li class="portfolio"><a href="#" onclick="return false;">Photo Gallery</a>
-                    <ul>
-                        <li><a href="galleria.html">Yesterday's Photos</a></li>
-                        <li><a href="galleria.html">Photos from 2 days ago</a></li>
-                        <li><a href="galleria.html">Photos from 3 days ago</a></li>
-                    </ul>
-                </li>
-                <li class="contact"><a href="contact.html">Contact</a></li>
+                <li class="portfolio"><a href="#" onclick="return false;">Weather/Trail Data</a>
+                  <ul>
+                      <li>Coming soon...</li>
+                  </ul>
+              </li>
+                  <li class="contact"><a href="contact.html">Contact</a></li>
             </ul>
             <!--End Horizontal Menu-->
 
@@ -83,42 +82,40 @@
     <div class="content-inner">
       <!--About us content-->
       <div class="full-width-transparent clearfix">
-        <h1>About KW TrailCam</h1>
-        <h2>Hydrocat/TrailCam Project</h2>
+        <h1>The Trail Monitoring System</h1>
 
         <!--Heading tag examples-->
         <div class="clearfix bottom-breaker">
             <h2>Motivation</h2>
-            <p>The motivation for the project was to be able to see and find out the trail conditions in the Hydrocut without having to actually go into the forest. While we can make assumptions about what the trails are like, we really can't know for sure.
-                The project got started when one of the developers obtained a 4G modem from Worldine Canada for testing. Worldline is introducing a new 4G service.
+            <p>The system provide two pieces:
+              <ul>
+                  <li>answers the question: Are the trails muddy? Should they be open?</li>
+                  <li>informs uses via the internet and electronics trailhead signs that the trails are open or closed</li>
+              </ul>
+            </p>
+            <p>
+              The motivation for the project is to be able find out trail conditions without having to travel to the trails to determine if they are muddy, icy, or generally rideable. In Ontario, mountain bike trails are closed to riders to protect the trails from damage and erosion. 
+              This project aims to easy the work of volunteers in determining if the trails should be open.
             </p>
             <h2>The Story</h2>
-            <P>Full details of the project and others I've worked on can be found online in IOT Magazine. Read about the project in the story <a href="https://theiotmagazine.com/why-eat-raspberry-pi-when-arduino-fruit-will-do-3ebfd8724d" target="_blank">Why Eat Raspberry PI when Arduino Fruit will do</a> on Medium.com</P>
+            <P>The details of the system are evolving as the number of sensors and the type of data collected is increasing. Some of the details of the project are outlined in IOT Magazine. Read about the project in the story <a href="https://theiotmagazine.com/why-eat-raspberry-pi-when-arduino-fruit-will-do-3ebfd8724d" target="_blank">Why Eat Raspberry PI when Arduino Fruit will do</a> on Medium.com</P>
+            <p>The ESP32 microcontroller from Espressif has been selected as the system of choice for development.</p>
             <h2>Technology</h2>
             <h3>Solar Charger</h3>
-            <p>The solar charger is based on a 20W Colman solar panel from KW Surplus driving a Chinese charge controller picked up from Amazon. It's not the greatest setup, but the upgrade to an improved solar charge controller seems to allow the battery to be maintained.</p>
-            <p>The battery is a 12V deep cycle gel cell battery. The system runs on 12V.</p>
+            <p>The solar charger is based on a 235W Solarwinds panel driving a EPever Tracer 10 charge controller running a 20AH 24V battery pack. The solar charge is connected to a ESP32 modbus logger and reports data to the <a href="http://data3.kwtrailcam.ca">Solar Charger Thingspeak Channel</a>.</p>
             <h3>Website</h3>
-            This website is a static html page based on a theme purchased from Themeforest. The camera calls a REST service on the web host to upload the image data (filename, annotation, etc.) to a MySQL database. 
-            The same REST service is called by javascript code in the backend of the website to update the pages for the website background images as well as the gallery links. Images are collected from the camera and uploaded via FTP
-            to the web host for storage.
+            This website is a static html page based on a theme purchased from Themeforest. The camera currently stores the files locally on disk and makes them available as required. The intent of the camera is for security purposes.
             <h3>Camera</h3>
             <p>The camera is based in a Raspberry PI W connected to a Raspberry camera. To that board is a one wire temperature sensor and a I2C light sensor. The light sensors allows the Raspberry PI to detect the amount of light and adjust the camera's exposure. An I2C voltage sensor is used to check the battery voltage. 
                 Battery, temperature, and light information is posted to our <a href="https://thingspeak.com/channels/738696" target="_blank">ThinkSpeak Channel</a>. We want to know when the battery is getting to low and needs some help. We've had the SD card in the Raspberry PI get chewed up when the battery drops out. The voltage sensor allows
                 Raspberry PI to text us when there is a low voltage condition and shutdown the system before the solar charge controller pulls the power to the device.</p>
-            <h2>Future Direction: Step 1 - Dump the RPi</h2>
-            <P>The Raspberry PI W used for the device has proven to be unreliable. The board has died completely once and had to be replaced. The WIFI chip routinely looses connection with the internet and the board has to be rebooted to get it to 
-                respond. Additionally, the whole idea of running a completely linux operating system to run one python script seems silly. We are considering using a ESP32 or Maixduino board as a replacement.
+            <h2>Future Directions: Sensor Network</h2>
+            <P>Currently under test is a sensor system consisting of soil moisture, soil temperature, and rainfall detection. We plan to build on this system and deploy them throughout the forest using low power radio transmitters to get the data back to the trailhead for transmission to the internet.
             </P>
-            <h2>Future Direction: Step 2 - Artificial Intelligence</h2>
-            <P>The purpose of the camera images is more than photos of the trails. We would like to be able to count the number of riders in the Hydrocut using only imaging technology. The camera system will be updated to use motion detection to sense riders in the forest and snap their photo. 
-            The images collected by the motion detection system will be fed into TensorFlow to train the AI to detect a ride, a hiker, wildlife, etc. and get an accurate count of the entities in the forest.</P>
-            <h2>Future Direction: Step 3 - Remote Sensors</h2>
-            <p>Future versions will be enhanced with remote RF sensor units that will collect temperature, humidity, and soil moisture readings. Using these LORA radio sensors, we will be able to determine if the trails are muddy or not. We will allow be looking into infrared sensors to detect mud and ice directly for winter trail conditions.</p>
-            <h2>Where We Are Now</h2>
-            <p>Currently, the solar charger and the camera hardware in development. While we had the camera in the forest for a few weeks, it was a pain to hike 30 mins into the forest to make repairs and adjustments. The camera now resides my backyard.
-            It makes for an easy place to get at when things fail or stop working. When the device starts to become reliable and work for a month without fail, we will consider redeployment into the forest.
-            </p>
+            <h2>Future Directions: Trailhead Signs</h2>
+            <P>Not everyone is on social media. Not everyone knows that the trails are open or closed. We plan to deploy EPaper or LCD internet connected displays at the trailheads to inform users of the trail status. The signs will be connected to the instagram account allowing volunteers to update the trail status in one place and have it reflected everywhere. </P>
+            <h2>Future Directions:  Artifical Intelligence</h2>
+            <p>Once we have a large enough sensor network and enough data to process, we will use AI to review the data. The goal is to have sensor network determine if the trails should be opened or closed automatically without human intervention.</p>
             <h2>We Need Help</h2>
             <p>If you are interested in participating in the project, we would use help with hardware design, printed circuit board design, software project. We are willing to work with those who have time to learn programming. Willingness to work with Linux, Raspberry PI, Ardrino, Python, and C are skills we can use/offer.</p>
             <p>Hit our <a href="contact.html">contact page</a> and send us an email if you are interested or has skills we can use.</p>
@@ -128,22 +125,30 @@
 
          <!--Images in content example-->
         <div class="clearfix bottom-breaker">
-
            <div class="one-of-two">
-           <h3>The Hydrocut Webcam</h3>
-           <img class="img-left" src="images/solarpanel-2.jpg" width="200" alt="solarpanel" />
-            <p>For the first version, we bought some parts from KW Surplus, and hiked into the forest at the Hydrocut to mount the camera and solar charger up at one of the trailheads.</p>
-            <p>This first version ran off an old car battery and a cheap solar panel. It managed to last about two weeks before the battery died and the Raspberry PI gave up.</p>
+           <h3>Remote Sensor Box</h3>
+           <img class="img-left" src="images/remotesensor.jpg" width="200" alt="remotesensor" />
+            <p>This prototype system uses an ESP32 MCU connected to soil moisture, soil temperature, and rain sensors. The prototype is connecting to the internet via WIFI sending data to Thingspeak directly. This prototype is close enough to the solar array and 3G modem. Future versions will use LORA radios and be able to work anywhere in the forest.</p>
             </div>
             <div class="two-of-two">
-            <h3>Trail Webcam</h3>
-            <img class="img-right" src="images/solarpanel-1.jpg" width="200" alt="solarpanel" />
-            <p>The second version used an improved gel cell battery and was moved to one of the co-developers back yard to make getting at the device easier - no 30 min hike into the forest.</p>
-            <p>The unit lasted about a week again before the battery died. The unit is currently being upgraded and in the meantime the solar charge controller was replaced with a better model. The battery appears to be lasting.</p>
+            <h3>Prototyping</h3>
+            <img class="img-right" src="images/prototyping.jpg" width="200" alt="solarpanel" />
+            <p>The ESP32 device makes for easy prototyping. The ESP-IDF SDK includes most of the code require to operate the device for the different busses needed. Code is written in C or C++.</p>
             </div>
-
         </div>
-        <!--End Images in content example-->
+        <div class="clearfix bottom-breaker">
+          <div class="one-of-two">
+          <h3>ESP32 Modbus logger</h3>
+          <img class="img-left" src="images/esp32-modbus.jpg" width="200" alt="remotesensor" />
+           <p>Interfacing to the modbus on the EPever controller was a simple matter. The ESP32 reads the read time data from the solar charger, and uploads the data to <a href="http://data3.kwtrailcam.ca">ThinkSpeak channel</a>. </p>
+           </div>
+           <div class="two-of-two">
+           <h3>Prototyping</h3>
+           <img class="img-right" src="images/trailcam.jpg" width="200" alt="solarpanel" />
+           <p>Used as a prototype for a security camera, this trail camera device is based on a Raspberry PI. Future devices will be developed using the ESP32CAM camera board to run low power cameras anywhere in the forest. While this current version requires a WIFI connection, the future plan is to collect the images locally in the device and retrieve them when required.</p>
+           </div>
+       </div>
+       <!--End Images in content example-->
 
       </div>
       <!--End About us content-->
@@ -156,7 +161,7 @@
     <div class="footer-inside clearfix">
 
       <!--Footers Left Column-->
-      <div class="foot-left-col">Copyright &copy; 2019 <a href="http://kwtrailcam.ca" class="white-link">KWTrailCam.ca</a> </div>
+      <div class="foot-left-col">Copyright &copy; 2020 <a href="http://kwtrailcam.ca" class="white-link">KWTrailCam.ca</a> </div>
       <!--End Footers Left Column-->
 
       <!--Footers Right Column-->

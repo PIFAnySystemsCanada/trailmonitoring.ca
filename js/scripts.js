@@ -26,56 +26,22 @@
 	$(document).ready(function() {
 		// Put the full screen mini controls container on the page
 		$('.foot-right-col').after($('<div id="fs-controls">'));
-        var data = JSON.stringify({
-            "camera_id": 1,
-            "count": 8,
-            "api_key": "YxtoQ4Taz2yBIHuuF6IBNWKt5HdjtY8X3Dk8exI4"
-          });
-          
-        var xhr = new XMLHttpRequest();
-        xhr.withCredentials = true;
-        
-        xhr.addEventListener("readystatechange", function () {
-        if (this.readyState === this.DONE) {
-            //console.log(this.responseText);
-            var result = JSON.parse(this.responseText);
-            var images = result['data']['records'];
-            var backgrounds = [];
-            images.forEach(imageitem => {
-                var background = {
-                    "image": imageitem['directory'] + "/" + imageitem['filename'],
-                    "caption": "<h1>" + imageitem['data'] + "</h1>",
-                    "title": imageitem['data']
-                }
-                backgrounds.push(background)
-            });
-            window.backgroundImages = backgrounds;
-
-            $.fullscreen(
-                $.extend(backgroundOptions, {
-                    backgrounds: backgrounds || window.backgrounds ,
-                    backgroundIndex: window.backgroundIndex,
-                    contentSelector: '.outside',
-                    alwaysShowCaptions: true,
-                    captionPosition: "right bottom",                  
-                    captionSpeed: 1000,
-                    errorBackground: "images/webcam/trailcam-1.png",
-                    captionEnhancement: function ($caption) {
-                        if (!!window.Cufon) {
-                            Cufon.replace($('h1', $caption));
-                        }
-                    }
-                })
-            );
-    
-    
-        }
-        });
-        
-        xhr.open("POST", "/api/photos/last.php");
-        xhr.setRequestHeader("content-type", "application/json");
-        
-        xhr.send(data);       
+		$.fullscreen(
+			$.extend(backgroundOptions, {
+				backgrounds: backgrounds || window.backgrounds ,
+				backgroundIndex: window.backgroundIndex,
+				contentSelector: '.outside',
+				alwaysShowCaptions: true,
+				captionPosition: "right bottom",                  
+				captionSpeed: 1000,
+				errorBackground: "images/webcam/trailcam-1.png",
+				captionEnhancement: function ($caption) {
+					if (!!window.Cufon) {
+						Cufon.replace($('h1', $caption));
+					}
+				}
+			})
+		);
 
 		$('#minimise-button').click(function () {
 			$.fullscreen.max();
