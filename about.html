@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>KW TrailCam</title>
+<title>Trail Monitoring System</title>
 
 <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
@@ -14,8 +14,7 @@
 <![endif]-->
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/plugins.js"></script>
-<script type="text/javascript" src="data/images.js"></script>
-<!--<script type="text/javascript" src="js/scripts.js"></script>-->
+<script type="text/javascript" src="js/scripts.js"></script>
 </head>
 <body>
 <div id="nojs-background">
@@ -29,7 +28,7 @@
     <div id="header-inner">
 
       <!--Logo-->
-      <div class="logo"><a href="index.html"><img src="images/mtbtraillogo.png" width="60px" title="KW TrailCam" alt="Logo" /></a></div>
+      <div class="logo"><a href="index.html"><img src="images/mtbtraillogo.png" width="60px" title="Trail Monitoring System" alt="Logo" /></a></div>
       <!--End Logo-->
 
       <!-- Nav -->
@@ -42,9 +41,12 @@
                 <li class="about"><a href="about.html">About</a></li>
                 <li class="portfolio"><a href="#" onclick="return false;">Weather/Trail Data</a>
                   <ul>
-                    <li><a href="http://data.kwtrailcam.ca" target="blank">Trailcam Data</a></li>
-                    <li><a href="http://data2.kwtrailcam.ca" target="blank">Dagmar Moisture Sensor Data</a></li>
-                    <li><a href="http://data3.kwtrailcam.ca" target="blank">Solar Charger Data</a></li>
+                    <li><a href="weatherdata.html" target="blank">Trail Weather Data</a></li>
+                    <li><a href="chargerdata.html" target="blank">Solar Charger Data</a></li>
+                    <li><a href="trailstatus.html" target="blank">Current Trail Status</a></li>
+                    <li><a href="http://data.trailmonitoring.ca" target="blank">Trailcam Data</a></li>
+                    <li><a href="http://data2.trailmonitoring.ca" target="blank">Dagmar Moisture Sensor Data</a></li>
+                    <li><a href="http://data3.trailmonitoring.ca" target="blank">Solar Charger Data</a></li>
                   </ul>
               </li>
                   <li class="contact"><a href="contact.html">Contact</a></li>
@@ -104,7 +106,7 @@
             <p>The ESP32 microcontroller from Espressif has been selected as the system of choice for development.</p>
             <h2>Technology</h2>
             <h3>Solar Charger</h3>
-            <p>The solar charger is based on a 235W Solarwinds panel driving a EPever Tracer 10 charge controller running a 20AH 24V battery pack. The solar charge is connected to a ESP32 modbus logger and reports data to the <a href="http://data3.kwtrailcam.ca">Solar Charger Thingspeak Channel</a>.</p>
+            <p>The solar charger is based on a 235W Solarwinds panel driving a EPever Tracer 10 charge controller running a 20AH 24V battery pack. The solar charge is connected to a ESP32 modbus logger and reports data to the <a href="chargedata.html">Solar Charger Thingspeak Channel</a>.</p>
             <h3>Website</h3>
             This website is a static html page based on a theme purchased from Themeforest. The camera currently stores the files locally on disk and makes them available as required. The intent of the camera is for security purposes.
             <h3>Camera</h3>
@@ -142,7 +144,7 @@
           <div class="one-of-two">
           <h3>ESP32 Modbus logger</h3>
           <img class="img-left" src="images/esp32-modbus.jpg" width="200" alt="remotesensor" />
-           <p>Interfacing to the modbus on the EPever controller was a simple matter. The ESP32 reads the read time data from the solar charger, and uploads the data to <a href="http://data3.kwtrailcam.ca">ThinkSpeak channel</a>. </p>
+           <p>Interfacing to the modbus on the EPever controller was a simple matter. The ESP32 reads the read time data from the solar charger, and uploads the data to <a href="http://data3.trailmonitoring.ca">ThinkSpeak channel</a>. </p>
            </div>
            <div class="two-of-two">
            <h3>Prototyping</h3>
@@ -163,7 +165,7 @@
     <div class="footer-inside clearfix">
 
       <!--Footers Left Column-->
-      <div class="foot-left-col">Copyright &copy; 2020 <a href="http://kwtrailcam.ca" class="white-link">KWTrailCam.ca</a> </div>
+      <div class="foot-left-col">Copyright &copy; 2020 <a href="http://trailmonitoring.ca" class="white-link">trailmonitoring.ca</a> </div>
       <!--End Footers Left Column-->
 
       <!--Footers Right Column-->
@@ -177,8 +179,8 @@
         <!--Hidden pop out boxes - Social icons-->
         <div class="footer-pop-out-box social-pop-out-box">
             <div class="clearfix">
-                <div class="one-icon-wrap"><a href="https://facebook.com/kwtrailcam"><img src="images/social-icons/facebook.png" width="32" height="32" alt="Facebook" /></a></div>
-                <div class="one-icon-wrap"><a href="https://twitter.com/kwtrailcam"><img src="images/social-icons/twitter.png" width="32" height="32" alt="Twitter" /></a></div>
+                <div class="one-icon-wrap"><a href="https://facebook.com/trailmonitoring"><img src="images/social-icons/facebook.png" width="32" height="32" alt="Facebook" /></a></div>
+                <div class="one-icon-wrap"><a href="https://twitter.com/trailmonitoring"><img src="images/social-icons/twitter.png" width="32" height="32" alt="Twitter" /></a></div>
             </div>
         </div>
 
