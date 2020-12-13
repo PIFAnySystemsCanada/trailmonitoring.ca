@@ -6,7 +6,7 @@
 	},
 
 	// Twitter username
-	twitterUsername = 'KWTrailCam',
+	twitterUsername = 'TrailMonitoringSystem',
 
 	// Number tweets to show, set to 0 to disable
 	tweetCount = 3,
@@ -21,27 +21,39 @@
 
 	Cufon.replace('h1, h2, h3, h4, h5');
 
-	$('html').addClass('js-enabled');
-
 	$(document).ready(function() {
 		// Put the full screen mini controls container on the page
 		$('.foot-right-col').after($('<div id="fs-controls">'));
-		$.fullscreen(
-			$.extend(backgroundOptions, {
-				backgrounds: backgrounds || window.backgrounds ,
-				backgroundIndex: window.backgroundIndex,
-				contentSelector: '.outside',
-				alwaysShowCaptions: true,
-				captionPosition: "right bottom",                  
-				captionSpeed: 1000,
-				errorBackground: "images/webcam/trailcam-1.png",
-				captionEnhancement: function ($caption) {
-					if (!!window.Cufon) {
-						Cufon.replace($('h1', $caption));
+
+		if (typeof backgrounds !== 'undefined')
+		{
+			$('html').addClass('js-enabled');
+			(async function () {
+				var trailcamdata = await getRESTData(getThingsSpeakURLLastItem("tempdata"));
+				var temperature = trailcamdata.feeds[0]['field3'];
+				backgrounds.forEach(imageitem => {
+					imageitem['caption'] = "<h1>" + imageitem['caption'] + " - [Current Air Temp: " + temperature + "C] </h1>";
+					//console.log(imageitem['caption']);
+				});
+			})();
+
+			$.fullscreen(
+				$.extend(backgroundOptions, {
+					backgrounds: backgrounds || window.backgrounds ,
+					backgroundIndex: window.backgroundIndex,
+					contentSelector: '.outside',
+					alwaysShowCaptions: true,
+					captionPosition: "right bottom",                  
+					captionSpeed: 1000,
+					errorBackground: "images/webcam/trailcam-1.png",
+					captionEnhancement: function ($caption) {
+						if (!!window.Cufon) {
+							Cufon.replace($('h1', $caption));
+						}
 					}
-				}
-			})
-		);
+				})
+			);
+		}
 
 		$('#minimise-button').click(function () {
 			$.fullscreen.max();
