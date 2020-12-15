@@ -12,7 +12,10 @@ var thingspeakurls =
     {
         "tempdata": "https://api.thingspeak.com/channels/738696/feeds.json",
         "solardata": "https://api.thingspeak.com/channels/1228246/feeds.json",
-        "espdata": "https://api.thingspeak.com/channels/1191345/feeds.json"
+        "espdata": "https://api.thingspeak.com/channels/1191345/feeds.json",
+        "espage": "https://api.thingspeak.com/channels/1191345/feeds/last_data_age.json",
+        "espage": "https://api.thingspeak.com/channels/1228246/feeds/last_data_age.json",
+        "espage": "https://api.thingspeak.com/channels/738696/feeds/last_data_age.json",
     };
 
 
@@ -35,7 +38,9 @@ function getDateString()
 function getThingsSpeakURLByDate(urlname)
 {
     var dateString = getDateString();
-    var result = thingspeakurls[urlname] + "?days=1&start=" + dateString;
+//    var result = thingspeakurls[urlname] + "?days=1&start=" + dateString;
+    var result = thingspeakurls[urlname] + "?days=1&timezone=America%2FNew_York";
+    //var result = thingspeakurls[urlname] + "?count=1440";
     return result;
 }
 
@@ -46,6 +51,16 @@ function getThingsSpeakURLByDate(urlname)
  function getThingsSpeakURLLastItem(urlname)
  {
      var result = thingspeakurls[urlname] + "?results=1";
+     return result;
+ }
+
+/**
+  * Gets the Thingspeak URL without any filter
+  * @param urlname Name of the URL from the thinkspeakurls hash
+  */
+ function getThingsSpeakURL(urlname)
+ {
+     var result = thingspeakurls[urlname];
      return result;
  }
 

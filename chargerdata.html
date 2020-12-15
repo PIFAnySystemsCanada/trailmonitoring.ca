@@ -12,12 +12,13 @@
 <!--[if IE]>
     <link rel="stylesheet" type="text/css" href="css/ie.css" />
 <![endif]-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/plugins.js"></script>
-<script type="text/javascript" src="js/scripts.js"></script>
 <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript" src="js/utility.js"></script>
-<script type="text/javascript" src="js/solardata.js"></script>-->
+<script type="text/javascript" src="js/solardata.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
 </head>
 <body>
 <div id="nojs-background">
@@ -94,6 +95,10 @@
         <!--Heading tag examples-->
         <h2>Solar Charger Data</h2>
         <div class="clearfix bottom-breaker">
+          <div id="status_loading"><h3>(Re)Loading data....<i class="fa fa-refresh fa-spin" style="font-size:18px"></i></h3></div>
+          <div id="status_loaded" hidden=true><h3 id="status_text">Loaded and Update to Date</h3></div>
+        </div>
+        <div class="clearfix bottom-breaker">
           <div id="dials" style="width:750px;height:500px;"></div>
         </div>
         <div class="clearfix bottom-breaker">
@@ -132,9 +137,9 @@
         <!--Hidden pop out boxes - Social icons-->
         <div class="footer-pop-out-box social-pop-out-box">
             <div class="clearfix">
-                <div class="one-icon-wrap"><a href="https://facebook.com/trailmonitoring"><img src="images/social-icons/facebook.png" width="32" height="32" alt="Facebook" /></a></div>
-                <div class="one-icon-wrap"><a href="https://twitter.com/trailmonitoring"><img src="images/social-icons/twitter.png" width="32" height="32" alt="Twitter" /></a></div>
-            </div>
+              <div class="one-icon-wrap"><a href="https://instagram.com/trailmonitoring"><img src="images/social-icons/instagram.png" width="32" height="32" alt="Instagram" /></a></div>
+              <div class="one-icon-wrap"><a href="https://twitter.com/trailmonitoring"><img src="images/social-icons/twitter.png" width="32" height="32" alt="Twitter" /></a></div>
+           </div>
         </div>
 
         <!--Hidden pop out boxes - Twitter-->
