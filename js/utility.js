@@ -14,8 +14,8 @@ var thingspeakurls =
         "solardata": "https://api.thingspeak.com/channels/1228246/feeds.json",
         "espdata": "https://api.thingspeak.com/channels/1191345/feeds.json",
         "espage": "https://api.thingspeak.com/channels/1191345/feeds/last_data_age.json",
-        "espage": "https://api.thingspeak.com/channels/1228246/feeds/last_data_age.json",
-        "espage": "https://api.thingspeak.com/channels/738696/feeds/last_data_age.json",
+        "solarage": "https://api.thingspeak.com/channels/1228246/feeds/last_data_age.json",
+        "tempage": "https://api.thingspeak.com/channels/738696/feeds/last_data_age.json",
     };
 
 

@@ -2,7 +2,6 @@ class SolarWidgets
 {
 	constructor()
 	{
-		this.initialized = false;
 		this.dialDiv = 'dials';
 		this.powerChartDiv = 'powerChart';
 		this.batsocChartDiv = 'batsocChart';
@@ -181,21 +180,22 @@ var alreadyInitialized = false;
 
 function updateSolarWidgets()
 {
+	var solarWidgets = new SolarWidgets();
+	// First time threw, just draw empty widgets
+	if (!alreadyInitialized)
+	{
+		console.log("Drawing windows the first time....");
+		solarWidgets.drawWidgets();
+		alreadyInitialized = true;
+	}
+	console.log("Updating...");
+
 	(async function() {
-		var solarWidgets = new SolarWidgets();
-		console.log("Updating...");
 		var loading = document.getElementById("status_loading");
 		loading.hidden = false;
 		var loaded = document.getElementById("status_loaded");
 		loaded.hidden = true;
 
-		// First time threw, just draw empty widgets
-		if (!alreadyInitialized)
-		{
-			console.log("Drawing windows the first time....");
-			solarWidgets.drawWidgets();
-			alreadyInitialized = true;
-		}
 		var timedata_x = new Array();
 		var pvpowerdata_y = new Array();
 		var batpowerdata_y = new Array();
@@ -204,23 +204,7 @@ function updateSolarWidgets()
 		var maxpvvoltage = 0.0;
 		var maxbatvoltage = 0.0;
 		var maxbatsoc = 0;
-		var solarage = await getRESTData(getThingsSpeakURL("espage"));
-		var loaded_text = document.getElementById("status_text");
-		if (solarage.last_data_age>3600)
-		{
-			loaded_text.innerHTML="Loaded but Stale (offline?)";
-		}
-		else if (solarage.last_data_age>600)
-		{
-			loaded_text.innerHTML="Loaded but Old";
-		}
-		else 
-		{
-			loaded_text.innerHTML="Loaded and Up to Date";
-		}
-
 		var solardata = await getRESTData(getThingsSpeakURLByDate("solardata"));
-		console.log(solardata);
 		solardata.feeds.forEach(item => {
 			//var date = new Date(item['created_at']);
 			//var dateString = date.toISOString()
@@ -270,9 +254,25 @@ function updateSolarWidgets()
 		solarWidgets.drawWidgets();				
 		loading.hidden = true;
 		loaded.hidden = false;
-
-
 	})();
+
+	(async function() {
+		var solarage = await getRESTData(getThingsSpeakURL("solarage"));
+		var loaded_text = document.getElementById("status_text");
+		if (solarage.last_data_age>3600)
+		{
+			loaded_text.innerHTML="Loaded but Stale (offline?)";
+		}
+		else if (solarage.last_data_age>600)
+		{
+			loaded_text.innerHTML="Loaded but Old";
+		}
+		else 
+		{
+			loaded_text.innerHTML="Loaded and Up to Date";
+		}
+	})();
+
 }
 
 ;(function($, window) {

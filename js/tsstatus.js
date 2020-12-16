@@ -11,6 +11,9 @@
 			tsstatustext.innerHTML="<h2 align='center'>Trails are " + trailstatusdata.status.toUpperCase() + "</h2>";
 			var tsmessagetext = document.getElementById('tsmessage');
 			tsmessagetext.innerHTML = "<h3 align='center'>" + trailstatusdata.message + "</h3>";
+			var tsupdatedtext = document.getElementById('tsupdated');
+			var updatedDate = new Date(trailstatusdata.updatedAt);
+			tsupdatedtext.innerHTML = "<h3 align='center'>Last Updated: " + updatedDate.toString() + "</h3>";
 			
 		})();
 
