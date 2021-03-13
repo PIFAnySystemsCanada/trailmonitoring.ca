@@ -42,8 +42,13 @@
           <!--Horizontal Menu-->
           <ul id="horz-nav-ul" class="sf-menu">
                 <li class="home"><a href="index.html">Home</a></li>
-                <li class="about"><a href="about.html">About</a></li>
-                <li class="portfolio"><a href="#" onclick="return false;">Weather/Trail Data</a>
+                <li class="about"><a href="#" onclick="return false;">About</a>
+                    <ul>
+                      <li class="about"><a href="about.html">About the Project</a></li>
+                      <li class="about"><a href="careers.html">Careers</a></li>
+                    </ul>
+                  </li>
+                      <li class="portfolio"><a href="#" onclick="return false;">Weather/Trail Data</a>
                     <ul>
                         <li><a href="weatherdata.html" target="blank">Trail Weather Data</a></li>
                         <li><a href="chargerdata.html" target="blank">Solar Charger Data</a></li>
@@ -51,7 +56,8 @@
                         <li><a href="http://data.trailmonitoring.ca" target="blank">Trailcam Data</a></li>
                         <li><a href="http://data2.trailmonitoring.ca" target="blank">Dagmar Moisture Sensor Data</a></li>
                         <li><a href="http://data3.trailmonitoring.ca" target="blank">Solar Charger Data</a></li>
-                        </ul>
+                        <li><a href="https://g-bc31b10e84.grafana-workspace.us-east-1.amazonaws.com" target="blank">New AWS Dashboard</a></li>
+                      </ul>
                 </li>
                     <li class="contact"><a href="contact.html">Contact</a></li>
             </ul>
@@ -96,119 +102,19 @@
       <!--End Transparent Header-->
 
       <div class="plain-black clearfix">
-      	<!--Contact Left Col-->
-      	<div class="contact-left-col">
-
-          <!-- To copy the form HTML, start here -->
-          <div class="quform-outer quform-theme-dark-dark">
-              <form class="quform" action="quform/process.php" method="post" enctype="multipart/form-data" onclick="">
-
-                  <div class="quform-inner">
-                      <h3>Send us a message</h3>
-
-                      <div class="quform-elements">
-
-                          <!-- Begin 2 column Group -->
-                          <div class="quform-group-wrap quform-group-style-plain quform-group-alignment-proportional">
-                              <div class="quform-group-elements">
-
-                                  <div class="quform-group-row quform-group-row-2cols">
-
-                                      <!-- Begin Text input element -->
-                                      <div class="quform-element quform-element-text quform-full-width">
-                                          <div class="quform-spacer">
-                                              <label for="name">Name <span class="quform-required">*</span></label>
-                                              <div class="quform-input">
-                                                  <input id="name" type="text" name="name" />
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <!-- End Text input element -->
-
-                                      <!-- Begin Text input element -->
-                                      <div class="quform-element quform-element-text quform-full-width">
-                                          <div class="quform-spacer">
-                                              <label for="email">Email address <span class="quform-required">*</span></label>
-                                              <div class="quform-input">
-                                                  <input class="quform-tooltip" id="email" type="text" name="email" title="We will never send you spam, we value your privacy as much as our own" />
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <!-- End Text input element -->
-
-                                  </div>
-
-                              </div>
-                          </div>
-                          <!-- End 2 column Group -->
-
-                          <!-- Begin Textarea element -->
-                          <div class="quform-element quform-element-textarea quform-full-width">
-                              <div class="quform-spacer">
-                                  <label for="message">Message <span class="quform-required">*</span></label>
-                                  <div class="quform-input">
-                                      <textarea id="message" name="message" style="height: 130px;"></textarea>
-                                  </div>
-                              </div>
-                          </div>
-                          <!-- End Textarea element -->
-
-                          <!-- Begin Captcha element -->
-                          <div class="quform-element quform-element-captcha quform-small">
-                              <div class="quform-spacer">
-                                  <label for="type_the_word">Type the word <span class="quform-required">*</span></label>
-                                  <div class="quform-input quform-cf">
-                                      <input id="type_the_word" type="text" name="type_the_word" />
-                                      <div class="quform-captcha">
-                                          <div class="quform-captcha-inner">
-                                              <img src="images/captcha.png" alt="" />
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <!-- End Captcha element -->
-
-                          <!-- Begin Submit button -->
-                          <div class="quform-submit">
-                              <div class="quform-submit-inner">
-                                  <button type="submit" value="Send"><span><em>Send</em></span></button>
-                              </div>
-                              <div class="quform-loading-wrap"><span class="quform-loading"></span></div>
-                          </div>
-                          <!-- End Submit button -->
-                     </div>
-                 </div>
-              </form>
-          </div>
-          <!-- To copy the form HTML, end here -->
-
-        </div>
-        <!--End Contact Left Col-->
 
         <!--Contact right Col-->
-        <div class="contact-right-col">
+        <div class="contact-left-col">
             <div class="contact-info-wrap">
 
                 <!--Phone Number-->
-                <div class="contact-type-wrap  phone clearfix">
+                <div class="contact-type-wrap  email clearfix">
                     <div class="contact-type-left">
                         <span class="contact-ico"></span>
-                        <h3>Phone</h3>
+                        <h3>Email (Project Lead)</h3>
                     </div>
                     <div class="contact-type-right">
-                    +1 (226) 476 1234
-                    </div>
-                </div>
-
-                <!--Fax Number-->
-                <div class="contact-type-wrap fax clearfix">
-                    <div class="contact-type-left">
-                        <span class="contact-ico"></span>
-                        <h3>Fax</h3>
-                    </div>
-                    <div class="contact-type-right">
-                    +1 (226) 476 1234
+                        <a href="mailto:mark.buckaway@waterloocyclingclub.ca">mark dot buckaway at waterloocyclingclub.ca</a>
                     </div>
                 </div>
 
@@ -253,7 +159,7 @@
     <div class="footer-inside clearfix">
 
       <!--Footers Left Column-->
-      <div class="foot-left-col">Copyright &copy; 2019 <a href="http://trailmonitoring.ca" class="white-link">trailmonitoring.ca</a> </div>
+      <div class="foot-left-col">Copyright &copy; 2021 <a href="http://trailmonitoring.ca" class="white-link">trailmonitoring.ca</a> </div>
       <!--End Footers Left Column-->
 
       <!--Footers Right Column-->

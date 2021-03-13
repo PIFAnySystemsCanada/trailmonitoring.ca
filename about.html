@@ -38,8 +38,13 @@
             <!--Horizontal Menu-->
             <ul id="horz-nav-ul" class="sf-menu">
                 <li class="home"><a href="index.html">Home</a></li>
-                <li class="about"><a href="about.html">About</a></li>
-                <li class="portfolio"><a href="#" onclick="return false;">Weather/Trail Data</a>
+                <li class="about"><a href="#" onclick="return false;">About</a>
+                  <ul>
+                    <li class="about"><a href="about.html">About the Project</a></li>
+                    <li class="about"><a href="careers.html">Careers</a></li>
+                  </ul>
+                </li>
+                    <li class="portfolio"><a href="#" onclick="return false;">Weather/Trail Data</a>
                   <ul>
                     <li><a href="weatherdata.html" target="blank">Trail Weather Data</a></li>
                     <li><a href="chargerdata.html" target="blank">Solar Charger Data</a></li>
@@ -47,6 +52,7 @@
                     <li><a href="http://data.trailmonitoring.ca" target="blank">Trailcam Data</a></li>
                     <li><a href="http://data2.trailmonitoring.ca" target="blank">Dagmar Moisture Sensor Data</a></li>
                     <li><a href="http://data3.trailmonitoring.ca" target="blank">Solar Charger Data</a></li>
+                    <li><a href="https://g-bc31b10e84.grafana-workspace.us-east-1.amazonaws.com" target="blank">New AWS Dashboard</a></li>
                   </ul>
               </li>
                   <li class="contact"><a href="contact.html">Contact</a></li>
@@ -91,10 +97,11 @@
         <!--Heading tag examples-->
         <div class="clearfix bottom-breaker">
             <h2>Motivation</h2>
-            <p>The system provide two pieces:
+            <p>The system provide three pieces:
               <ul>
-                  <li>answers the question: Are the trails muddy? Should they be open?</li>
-                  <li>informs uses via the internet and electronics trailhead signs that the trails are open or closed</li>
+                  <li>answers the question: Are the trails muddy? Should they be open? without trail maintainers having to visit the trails</li>
+                  <li>informs uses via an phone app and electronics trailhead signs that the trails are open or closed</li>
+                  <li>Provide usage data via trail usage counters to give real time data on trail usershiup</li>
               </ul>
             </p>
             <p>
@@ -105,24 +112,32 @@
             <P>The details of the system are evolving as the number of sensors and the type of data collected is increasing. Some of the details of the project are outlined in IOT Magazine. Read about the project in the story <a href="https://theiotmagazine.com/why-eat-raspberry-pi-when-arduino-fruit-will-do-3ebfd8724d" target="_blank">Why Eat Raspberry PI when Arduino Fruit will do</a> on Medium.com</P>
             <p>The ESP32 microcontroller from Espressif has been selected as the system of choice for development.</p>
             <h2>Technology</h2>
-            <h3>Solar Charger</h3>
-            <p>The solar charger is based on a 235W Solarwinds panel driving a EPever Tracer 10 charge controller running a 20AH 24V battery pack. The solar charge is connected to a ESP32 modbus logger and reports data to the <a href="chargedata.html">Solar Charger Thingspeak Channel</a>.</p>
-            <h3>Website</h3>
-            This website is a static html page based on a theme purchased from Themeforest. The camera currently stores the files locally on disk and makes them available as required. The intent of the camera is for security purposes.
-            <h3>Camera</h3>
-            <p>The camera is based in a Raspberry PI W connected to a Raspberry camera. To that board is a one wire temperature sensor and a I2C light sensor. The light sensors allows the Raspberry PI to detect the amount of light and adjust the camera's exposure. An I2C voltage sensor is used to check the battery voltage. 
-                Battery, temperature, and light information is posted to our <a href="https://thingspeak.com/channels/738696" target="_blank">ThinkSpeak Channel</a>. We want to know when the battery is getting to low and needs some help. We've had the SD card in the Raspberry PI get chewed up when the battery drops out. The voltage sensor allows
-                Raspberry PI to text us when there is a low voltage condition and shutdown the system before the solar charge controller pulls the power to the device.</p>
+            <h2>Solar Charger</h2>
+            <p>The solar charger is based on a 235W Solarwinds panel driving a EPever Tracer 10 charge controller running a 20AH 24V battery pack. The solar charge is connected to a ESP32 modbus logger and reports data to the <a href="chargedata.html">Solar Charger Thingspeak Channel</a>. 
+              This data will be moving to AWS Grafana as time permits.</p>
+            <h2>Website</h2>
+            <p>This website is a static html page and some javascript code. We are looking to move the website to AWS and provide a more integrated and dynamic site.</p>
+            <h2>Trail Status Monitor and iPhone/Andriod App</h2>
+            <p>The trail status monitor is a stop light like device to the mirrors the trail status. Android and iPhone apps will notify users of trail status when it changes as well as up to the minute trail 
+              conditions.
+            </p>
+            <h2>Weather Station</h2>
+            <p>Integrated sensors to provide sun, wind, temperature, pressure, soil temperature, soil moisture type data to the cloud.</p>
+            <h2>AWS IoT Core</h2>
+            <p>Moving away from Thingspeak, new devices are using the AWS IoT core, the AWS Timestream DB, and AWS managed Grafana to collect, story and display trail information. Trail maintainers
+                maintainers will use the Grafana instance and trail users will use the Andriod/iPhone app.
+            </p>
             <h2>Future Directions: Sensor Network</h2>
             <P>Currently under test is a sensor system consisting of soil moisture, soil temperature, and rainfall detection. We plan to build on this system and deploy them throughout the forest using low power radio transmitters to get the data back to the trailhead for transmission to the internet.
-            </P>
-            <h2>Future Directions: Trailhead Signs</h2>
-            <P>Not everyone is on social media. Not everyone knows that the trails are open or closed. We plan to deploy EPaper or LCD internet connected displays at the trailheads to inform users of the trail status. The signs will be connected to the instagram account allowing volunteers to update the trail status in one place and have it reflected everywhere. </P>
             <h2>Future Directions:  Artifical Intelligence</h2>
-            <p>Once we have a large enough sensor network and enough data to process, we will use AI to review the data. The goal is to have sensor network determine if the trails should be opened or closed automatically without human intervention.</p>
+            <p>Once we have a large enough sensor network and enough data to process, we will use AI to review the data. The goal is to have sensor network determine if the trails should be opened or closed automatically without human intervention. AWS offers a AI service to mine the data to find trends. We intend explore these options.
+              Additionally, AWS does image processing both localling using AWS GreenGrass and cloud services to process image data to allow us to determine trail usership by using cameras at the trailhead.
+              There are lots possiblities.
+            </p>
+
             <h2>We Need Help</h2>
-            <p>If you are interested in participating in the project, we would use help with hardware design, printed circuit board design, software project. We are willing to work with those who have time to learn programming. Willingness to work with Linux, Raspberry PI, Ardrino, Python, and C are skills we can use/offer.</p>
-            <p>Hit our <a href="contact.html">contact page</a> and send us an email if you are interested or has skills we can use.</p>
+            <p>If you are interested in participating in the project, we would use help with hardware design, printed circuit board design, software project. We are willing to work with those who have time to learn programming. </p>
+            <p>See how <a href="careers.html">"careers"</a> page for what we are looking for.</p>
         </div>
         <!--End Heading tag examples-->
 
@@ -130,9 +145,9 @@
          <!--Images in content example-->
         <div class="clearfix bottom-breaker">
            <div class="one-of-two">
-           <h3>Remote Sensor Box</h3>
-           <img class="img-left" src="images/remotesensor.jpg" width="200" alt="remotesensor" />
-            <p>This prototype system uses an ESP32 MCU connected to soil moisture, soil temperature, and rain sensors. The prototype is connecting to the internet via WIFI sending data to Thingspeak directly. This prototype is close enough to the solar array and 3G modem. Future versions will use LORA radios and be able to work anywhere in the forest.</p>
+           <h3>Trail Status Monitor</h3>
+           <img class="img-left" src="images/tms.jpg" width="200" alt="tms" />
+            <p>Finished trail status monitor placed at the trailhead to inform users of the trail open/close status.</p>
             </div>
             <div class="two-of-two">
             <h3>Prototyping</h3>
@@ -165,7 +180,7 @@
     <div class="footer-inside clearfix">
 
       <!--Footers Left Column-->
-      <div class="foot-left-col">Copyright &copy; 2020 <a href="http://trailmonitoring.ca" class="white-link">trailmonitoring.ca</a> </div>
+      <div class="foot-left-col">Copyright &copy; 2021 <a href="http://trailmonitoring.ca" class="white-link">trailmonitoring.ca</a> </div>
       <!--End Footers Left Column-->
 
       <!--Footers Right Column-->
@@ -179,6 +194,7 @@
         <!--Hidden pop out boxes - Social icons-->
         <div class="footer-pop-out-box social-pop-out-box">
             <div class="clearfix">
+                <div class="one-icon-wrap"><a href="https://instagram.com/hackiot"><img src="images/social-icons/instagram.png" width="32" height="32" alt="Instagram" /></a></div>
                 <div class="one-icon-wrap"><a href="https://instagram.com/trailmonitoring"><img src="images/social-icons/instagram.png" width="32" height="32" alt="Instagram" /></a></div>
                 <div class="one-icon-wrap"><a href="https://twitter.com/trailmonitoring"><img src="images/social-icons/twitter.png" width="32" height="32" alt="Twitter" /></a></div>
             </div>

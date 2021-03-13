@@ -40,7 +40,12 @@
         <!--Horizontal Menu-->
         <ul id="horz-nav-ul" class="sf-menu">
             <li class="home"><a href="index.html">Home</a></li>
-            <li class="about"><a href="about.html">About</a></li>
+            <li class="about"><a href="#" onclick="return false;">About</a>
+              <ul>
+                <li class="about"><a href="about.html">About the Project</a></li>
+                <li class="about"><a href="careers.html">Careers</a></li>
+              </ul>
+            </li>
             <li class="portfolio"><a href="#" onclick="return false;">Weather/Trail Data</a>
                 <ul>
                   <li><a href="weatherdata.html">Trail Weather Dashboard</a></li>
@@ -49,6 +54,7 @@
                 <li><a href="http://data.trailmonitoring.ca" target="blank">Trailcam Data</a></li>
                   <li><a href="http://data2.trailmonitoring.ca" target="blank">Dagmar Moisture Sensor Data</a></li>
                   <li><a href="http://data3.trailmonitoring.ca" target="blank">Solar Charger Data</a></li>
+                  <li><a href="https://g-bc31b10e84.grafana-workspace.us-east-1.amazonaws.com" target="blank">New AWS Dashboard</a></li>
               </ul>
             </li>
             <li class="contact"><a href="contact.html">Contact</a></li>
@@ -90,7 +96,8 @@
       <!-- Welcome box -->
       <div class="left-note-block">
         <h2>Trail Monitoring System</h2>
-        <p>The Trail Monitoring System in Kitchener, ON showcasing technology to capture weather and soil condition data. The system answers the question, "Are the trails muddy?" and informs users if the trails are open or closed via trail remote controlled open/close signs.</p>
+        <p>The Trail Monitoring System in Kitchener, ON is an IoT project showcasing technology to capture weather and soil condition data and let users know the condition of the trails. The system answers the question, "Are the trails muddy?", informs users if the trails are open or closed via trail remote controlled open/close signs and an IOS app, 
+          and provide usage data on trail users to answer the question "How busy are they and who is using them?".</p>
       </div>
       <!-- End welcome box -->
 
@@ -103,7 +110,7 @@
     <div class="footer-inside clearfix">
 
       <!--Footers Left Column-->
-      <div class="foot-left-col">Copyright &copy; 2020 <a href="http://trailmonitoring.ca" class="white-link">trailmonitoring.ca</a> </div>
+      <div class="foot-left-col">Copyright &copy; 2021 <a href="http://trailmonitoring.ca" class="white-link">trailmonitoring.ca</a> </div>
       <!--End Footers Left Column-->
 
       <!--Footers Right Column-->
@@ -117,6 +124,7 @@
         <!--Hidden pop out boxes - Social icons-->
         <div class="footer-pop-out-box social-pop-out-box">
             <div class="clearfix">
+              <div class="one-icon-wrap"><a href="https://instagram.com/hackiot"><img src="images/social-icons/instagram.png" width="32" height="32" alt="Instagram" /></a></div>
               <div class="one-icon-wrap"><a href="https://instagram.com/trailmonitoring"><img src="images/social-icons/instagram.png" width="32" height="32" alt="Instagram" /></a></div>
               <div class="one-icon-wrap"><a href="https://twitter.com/trailmonitoring"><img src="images/social-icons/twitter.png" width="32" height="32" alt="Twitter" /></a></div>
            </div>

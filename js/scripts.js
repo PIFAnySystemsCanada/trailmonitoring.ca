@@ -6,7 +6,7 @@
 	},
 
 	// Twitter username
-	twitterUsername = 'TrailMonitoringSystem',
+	twitterUsername = 'trailmonitoring',
 
 	// Number tweets to show, set to 0 to disable
 	tweetCount = 3,
