@@ -46,14 +46,13 @@
                 </li>
                     <li class="portfolio"><a href="#" onclick="return false;">Weather/Trail Data</a>
                   <ul>
-                    <li><a href="weatherdata.html" target="blank">Trail Weather Data</a></li>
-                    <li><a href="chargerdata.html" target="blank">Solar Charger Data</a></li>
+                    <li><a href="http://info.trailmonitoringsystem.com/d/Pqx5FCLMz/weather-data?orgId=1" target="blank">AWS Trail Weather Data</a></li>
+                    <li><a href="chargerdata.html" target="blank">Solar Charger Dashboard</a></li>
                     <li><a href="trailstatus.html" target="blank">Current Trail Status</a></li>
-                    <li><a href="http://data.trailmonitoring.ca" target="blank">Trailcam Data</a></li>
-                    <li><a href="http://data2.trailmonitoring.ca" target="blank">Dagmar Moisture Sensor Data</a></li>
-                    <li><a href="http://data3.trailmonitoring.ca" target="blank">Solar Charger Data</a></li>
-                    <li><a href="http://info.trailmonitoringsystem.com/d/Pqx5FCLMz/weather-data?orgId=1" target="blank">New AWS Weather Dashboard</a></li>
-                  </ul>
+                    <li><a href="http://data.trailmonitoring.ca" target="blank">Thingspeak Trailcam Data</a></li>
+                    <li><a href="http://data2.trailmonitoring.ca" target="blank">Thingspeak Dagmar Moisture Sensor Data</a></li>
+                    <li><a href="http://data3.trailmonitoring.ca" target="blank">Thingspeak Solar Charger Data</a></li>
+                    </ul>
               </li>
                   <li class="contact"><a href="contact.html">Contact</a></li>
             </ul>
@@ -97,16 +96,22 @@
         <!--Heading tag examples-->
         <div class="clearfix bottom-breaker">
             <h2>Motivation</h2>
-            <p>The system provide three pieces:
+            <p>The system provides a way for trail organizations and trail users to get information on a website and on their smartphones on up to date trail conditions. The project
+              is rapidly evolving from a system intended for the Hydrocut to a system meant for all trail systems. New features are being added as they come up.
               <ul>
-                  <li>answers the question: Are the trails muddy? Should they be open? without trail maintainers having to visit the trails</li>
-                  <li>informs uses via an phone app and electronics trailhead signs that the trails are open or closed</li>
-                  <li>Provide usage data via trail usage counters to give real time data on trail usershiup</li>
+                  <li>Provide a way for trail organizations to check on trail conditions without having to visit the trails</li>
+                  <li>informs uses via a website, an phone app and electronics trailhead signs that the trails are open or closed and should be ridden</li>
+                  <li>Provide usage data via trail usage counters to give real time data on trail usership and things like is there parking available</li>
+                  <li>Provide a way for trail users to communicate trail conditions and trail problems to other users and trail organizations</li>
+                  <li>Provide a way for trail users to donate to or buy memberships from trail organizations with standing at the trailhead</li>
               </ul>
             </p>
             <p>
-              The motivation for the project is to be able find out trail conditions without having to travel to the trails to determine if they are muddy, icy, or generally rideable. In Ontario, mountain bike trails are closed to riders to protect the trails from damage and erosion. 
-              This project that aims to easy the work of volunteers in determining if the trails should be open.
+              The original motivation for the project is to be able find out trail conditions without having to travel to the trails to determine if they are muddy, icy, or generally rideable. In Ontario, mountain bike trails are closed to riders to protect the trails from damage and erosion. 
+              This project that aims to ease the work of volunteers in determining if the trails should be open. However, it has become apparent that there is no succinct way for a trail user to find out trail conditions
+              on their favourite trails. We intend to provide that mention. The one place on the internet or on their smart phones where you can find out which of your favourite trails are ridden before you head out. Additionally,
+              we intend to solve other issues such as becoming a trail member. One app with all the information in one place. Yes, there is Trailforks, but the serves a different purpose. We do not intend to provide trail maps and such, but we want
+              to know where to ride when the conditions warrent checking before riding. Look forward to a new system for mountain biking.
             </p>
             <h2>The Story</h2>
             <P>The details of the system are evolving as the number of sensors and the type of data collected is increasing. Some of the details of the project are outlined in IOT Magazine. Read about the project in the story <a href="https://theiotmagazine.com/why-eat-raspberry-pi-when-arduino-fruit-will-do-3ebfd8724d" target="_blank">Why Eat Raspberry PI when Arduino Fruit will do</a> on Medium.com</P>
@@ -123,17 +128,14 @@
             </p>
             <h2>Weather Station</h2>
             <p>Integrated sensors to provide sun, wind, temperature, pressure, soil temperature, soil moisture type data to the cloud.</p>
-            <h2>AWS IoT Core</h2>
-            <p>Moving away from Thingspeak, new devices are using the AWS IoT core, the AWS Timestream DB, and AWS managed Grafana to collect, story and display trail information. Trail maintainers
-                maintainers will use the Grafana instance and trail users will use the Andriod/iPhone app.
+            <h2>AWS Backend</h2>
+            <p>Moving away from Thingspeak and custom managed systems, we are replacing the use of ThinkSpeak with AWS IoT core and AWS Timestream. Future systems will be AWS based to provide easy development and scalabiity.
             </p>
-            <h2>Future Directions: Sensor Network</h2>
+            <h2>Future Directions: Sensor Network and Artifical Intelligence</h2>
             <P>Currently under test is a sensor system consisting of soil moisture, soil temperature, and rainfall detection. We plan to build on this system and deploy them throughout the forest using low power radio transmitters to get the data back to the trailhead for transmission to the internet.
-            <h2>Future Directions:  Artifical Intelligence</h2>
-            <p>Once we have a large enough sensor network and enough data to process, we will use AI to review the data. The goal is to have sensor network determine if the trails should be opened or closed automatically without human intervention. AWS offers a AI service to mine the data to find trends. We intend explore these options.
+              Once we have a large enough sensor network and enough data to process, we will use AI to review the data. The goal is to have sensor network determine if the trails should be opened or closed automatically without human intervention. AWS offers a AI service to mine the data to find trends. We intend explore these options.
               Additionally, AWS does image processing both localling using AWS GreenGrass and cloud services to process image data to allow us to determine trail usership by using cameras at the trailhead.
-              There are lots possiblities.
-            </p>
+              There are lots possiblities.              
 
             <h2>We Need Help</h2>
             <p>We are running the project as an open source collaboration. If you are interested in participating in the project, we would use help with hardware design, printed circuit board design, software project. We are willing to work with those who have time to learn programming. </p>
@@ -180,7 +182,7 @@
     <div class="footer-inside clearfix">
 
       <!--Footers Left Column-->
-      <div class="foot-left-col">Copyright &copy; 2021 <a href="http://trailmonitoring.ca" class="white-link">trailmonitoring.ca</a> </div>
+      <div class="foot-left-col">Copyright &copy; 2021 <a href="http://trailmonitoringsystem.com" class="white-link">trailmonitoringsystem.com</a> </div>
       <!--End Footers Left Column-->
 
       <!--Footers Right Column-->
