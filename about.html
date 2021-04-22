@@ -104,18 +104,23 @@
                   <li>Provide usage data via trail usage counters to give real time data on trail usership and things like is there parking available</li>
                   <li>Provide a way for trail users to communicate trail conditions and trail problems to other users and trail organizations</li>
                   <li>Provide a way for trail users to donate to or buy memberships from trail organizations with standing at the trailhead</li>
+                  <li>Provide a way for trail users to get alerts/notications when trails are good to ride (Shred Alerts)</li>
               </ul>
             </p>
             <p>
               The original motivation for the project is to be able find out trail conditions without having to travel to the trails to determine if they are muddy, icy, or generally rideable. In Ontario, mountain bike trails are closed to riders to protect the trails from damage and erosion. 
               This project that aims to ease the work of volunteers in determining if the trails should be open. However, it has become apparent that there is no succinct way for a trail user to find out trail conditions
-              on their favourite trails. We intend to provide that mention. The one place on the internet or on their smart phones where you can find out which of your favourite trails are ridden before you head out. Additionally,
+              on their favourite trails. We intend to provide that method. The one place on the internet or on their smart phones where you can find out which of your favourite trails are ridden before you head out. Additionally,
               we intend to solve other issues such as becoming a trail member. One app with all the information in one place. Yes, there is Trailforks, but the serves a different purpose. We do not intend to provide trail maps and such, but we want
-              to know where to ride when the conditions warrent checking before riding. Look forward to a new system for mountain biking.
+              to know where to ride when the conditions warrent checking before riding....or better yet, we want to get notifications - "shread alerts" - when trails are calling you. Look forward to a new system for mountain biking.
+            </p>
+            <p> ...and possible other trail system types in the future. Yes, we are aware that this technology is applicable to other trail types such as hiking, downhill skiing, nordic skilling, etc., but our primary focus, at the start, will be mountain
+              biking. Are team are all mountain bikes, and we are starting with what we know...and expand later as we understand the problems of other trail types. We want to provide solutions to problems and not invent problems to solve.
             </p>
             <h2>The Story</h2>
-            <P>The details of the system are evolving as the number of sensors and the type of data collected is increasing. Some of the details of the project are outlined in IOT Magazine. Read about the project in the story <a href="https://theiotmagazine.com/why-eat-raspberry-pi-when-arduino-fruit-will-do-3ebfd8724d" target="_blank">Why Eat Raspberry PI when Arduino Fruit will do</a> on Medium.com</P>
-            <p>The ESP32 microcontroller from Espressif has been selected as the system of choice for development.</p>
+            <P>The system started some two years ago with a desire to know trail conditions before heading out the trails. That said, the details of the system are evolving on an exponential basis as the number of sensors, the type of data collected is increasing, and what we do with it changes. Even over the last month or more, we've changed to a system that supports just the Hydrocut to something
+              that can support any trail system. Some of the details of the project started are outlined in IOT Magazine. Read about the project in the story <a href="https://theiotmagazine.com/why-eat-raspberry-pi-when-arduino-fruit-will-do-3ebfd8724d" target="_blank">Why Eat Raspberry PI when Arduino Fruit will do</a> on Medium.com</P>
+            <p>We are developing a hardware and software platform to put all the information trail organizations, trail crew, and trail users need into one place.</p>
             <h2>Technology</h2>
             <h2>Solar Charger</h2>
             <p>The solar charger is based on a 235W Solarwinds panel driving a EPever Tracer 10 charge controller running a 20AH 24V battery pack. The solar charge is connected to a ESP32 modbus logger and reports data to the <a href="chargedata.html">Solar Charger Thingspeak Channel</a>. 
@@ -134,12 +139,12 @@
             <h2>Future Directions: Sensor Network and Artifical Intelligence</h2>
             <P>Currently under test is a sensor system consisting of soil moisture, soil temperature, and rainfall detection. We plan to build on this system and deploy them throughout the forest using low power radio transmitters to get the data back to the trailhead for transmission to the internet.
               Once we have a large enough sensor network and enough data to process, we will use AI to review the data. The goal is to have sensor network determine if the trails should be opened or closed automatically without human intervention. AWS offers a AI service to mine the data to find trends. We intend explore these options.
-              Additionally, AWS does image processing both localling using AWS GreenGrass and cloud services to process image data to allow us to determine trail usership by using cameras at the trailhead.
-              There are lots possiblities.              
+              Additionally, AWS does image processing both localling using AWS GreenGrass and cloud services to process image data to allow us to determine trail usership by using cameras at the trailhead. We could even deploy cameras at the trailhead
+              to determine number of open parking spots, or if a bike theft is happening. There are lots possiblities.              
 
             <h2>We Need Help</h2>
             <p>We are running the project as an open source collaboration. If you are interested in participating in the project, we would use help with hardware design, printed circuit board design, software project. We are willing to work with those who have time to learn programming. </p>
-            <p>See how <a href="careers.html">"careers"</a> page for what we are looking for.</p>
+            <p>See how <a href="volunteers.html">"volunteers"</a> page for what we are looking for.</p>
         </div>
         <!--End Heading tag examples-->
 
@@ -164,9 +169,9 @@
            <p>Interfacing to the modbus on the EPever controller was a simple matter. The ESP32 reads the read time data from the solar charger, and uploads the data to <a href="http://data3.trailmonitoring.ca">ThinkSpeak channel</a>. </p>
            </div>
            <div class="two-of-two">
-           <h3>Prototyping</h3>
+           <h3>Where we started</h3>
            <img class="img-right" src="images/trailcam.jpg" width="200" alt="solarpanel" />
-           <p>Used as a prototype for a security camera, this trail camera device is based on a Raspberry PI. Future devices will be developed using the ESP32CAM camera board to run low power cameras anywhere in the forest. While this current version requires a WIFI connection, the future plan is to collect the images locally in the device and retrieve them when required.</p>
+           <p>Using an embedded camera and a 3G modem, this trail camera device, based on a Raspberry PI, sent images to twitter. </p>
            </div>
        </div>
        <!--End Images in content example-->
