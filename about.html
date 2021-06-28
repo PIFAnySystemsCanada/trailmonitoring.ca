@@ -37,26 +37,23 @@
 
             <!--Horizontal Menu-->
             <ul id="horz-nav-ul" class="sf-menu">
-                <li class="home"><a href="index.html">Home</a></li>
-                <li class="about"><a href="#" onclick="return false;">About</a>
-                  <ul>
-                    <li class="about"><a href="about.html">About the Project</a></li>
-                    <li class="about"><a href="volunteers.html">Volunteers</a></li>
-                  </ul>
-                </li>
-                    <li class="portfolio"><a href="#" onclick="return false;">Weather/Trail Data</a>
-                  <ul>
-                    <li><a href="http://info.trailmonitoringsystem.com/d/Pqx5FCLMz/weather-data?orgId=1" target="blank">AWS Trail Weather Data</a></li>
-                    <li><a href="chargerdata.html" target="blank">Solar Charger Dashboard</a></li>
-                    <li><a href="trailstatus.html" target="blank">Current Trail Status</a></li>
-                    <li><a href="http://data.trailmonitoring.ca" target="blank">Thingspeak Trailcam Data</a></li>
-                    <li><a href="http://data2.trailmonitoring.ca" target="blank">Thingspeak Dagmar Moisture Sensor Data</a></li>
-                    <li><a href="http://data3.trailmonitoring.ca" target="blank">Thingspeak Solar Charger Data</a></li>
-                    </ul>
+              <li class="home"><a href="index.html">Home</a></li>
+              <li class="about"><a href="#" onclick="return false;">About</a>
+                <ul>
+                  <li class="about"><a href="about.html">About the Project</a></li>
+                  <li class="about"><a href="volunteers.html">Volunteers</a></li>
+                </ul>
               </li>
-                  <li class="contact"><a href="contact.html">Contact</a></li>
-            </ul>
-            <!--End Horizontal Menu-->
+                  <li class="portfolio"><a href="#" onclick="return false;">Weather/Trail Data</a>
+                <ul>
+                  <li><a href="https://dashboard.trailmonitoringsystem.com/" target="blank">AWS Trail Weather Data</a></li>
+                  <li><a href="https://dashboard.trailmonitoringsystem.com/d/nX-ZVq6Gz/solar-snyders?orgId=1" target="blank">AWS Solar Charger Dashboard</a></li>
+                  <li><a href="trailstatus.html" target="blank">Current Trail Status</a></li>
+              </ul>
+            </li>
+                <li class="contact"><a href="contact.html">Contact</a></li>
+          </ul>
+          <!--End Horizontal Menu-->
 
           <!--Search-->
           <div class="search-pop-up">
@@ -123,18 +120,18 @@
             <p>We are developing a hardware and software platform to put all the information trail organizations, trail crew, and trail users need into one place.</p>
             <h2>Technology</h2>
             <h2>Solar Charger</h2>
-            <p>The solar charger is based on a 235W Solarwinds panel driving a EPever Tracer 10 charge controller running a 20AH 24V battery pack. The solar charge is connected to a ESP32 modbus logger and reports data to the <a href="chargedata.html">Solar Charger Thingspeak Channel</a>. 
-              This data will be moving to AWS Grafana as time permits.</p>
+            <p>The solar charger is based on a 235W Solarwinds panel driving a EPever Tracer 10 charge controller running a 20AH 24V battery pack. The solar charge is connected to a ESP32 modbus logger and reports data to AWS IoT Core and uses Grafana running in AWS Fargate to display <a href="https://dashboard.trailmonitoringsystem.com/d/nX-ZVq6Gz/solar-snyders?orgId=1">Solar Charger Data</a>. 
+              </p>
             <h2>Website</h2>
-            <p>This website is a static html page and some javascript code. We are looking to move the website to AWS and provide a more integrated and dynamic site.</p>
+            <p>This website is a static html page and some javascript code and is a simple placeholder. The current testing version of the website is built on React and is hosted in AWS Amplify.</p>
             <h2>Trail Status Monitor and iPhone/Andriod App</h2>
             <p>The trail status monitor is a stop light like device to the mirrors the trail status. Android and iPhone apps will notify users of trail status when it changes as well as up to the minute trail 
               conditions.
             </p>
             <h2>Weather Station</h2>
-            <p>Integrated sensors to provide sun, wind, temperature, pressure, soil temperature, soil moisture type data to the cloud.</p>
+            <p>Integrated sensors to provide sun, wind, temperature, pressure, soil temperature, soil moisture type data to the cloud. All sensors log to AWS IoT Core. Currently, Grafana is used as the dasboard and is runing on AWS Fargate</p>
             <h2>AWS Backend</h2>
-            <p>Moving away from Thingspeak and custom managed systems, we are replacing the use of ThinkSpeak with AWS IoT core and AWS Timestream. Future systems will be AWS based to provide easy development and scalabiity.
+            <p>We are using AWS for all services in the backend including AWS IoT core, Timestream, Lambda, API Gateway, Aurora DB, Fargate, Secrets Manager, etc.. The system will be 100% serverless.
             </p>
             <h2>Future Directions: Sensor Network and Artifical Intelligence</h2>
             <P>Currently under test is a sensor system consisting of soil moisture, soil temperature, and rainfall detection. We plan to build on this system and deploy them throughout the forest using low power radio transmitters to get the data back to the trailhead for transmission to the internet.
