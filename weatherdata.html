@@ -17,12 +17,12 @@
 <script type="text/javascript" src="js/plugins.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
 <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!--<script type="text/javascript" src="js/webility-min.js"></script>-->
 <script type="text/javascript" src="js/utility.js"></script>
 <script type="text/javascript" src="js/weatherdata.js"></script>
 </head>
 <body>
-<div id="nojs-background">
-    <img src="images/webcam/trailcam-7.png" alt="" /><!-- Non-JavaScript background -->
+<div id="nojs-background">   
 </div>
 <!--Start Outside-->
 <div class="outside"><a name="top"></a>
@@ -50,12 +50,11 @@
               </li>
                   <li class="portfolio"><a href="#" onclick="return false;">Weather/Trail Data</a>
                 <ul>
-                  <li><a href="http://info.trailmonitoringsystem.com/d/Pqx5FCLMz/weather-data?orgId=1" target="blank">AWS Trail Weather Data</a></li>
-                  <li><a href="chargerdata.html" target="blank">Solar Charger Dashboard</a></li>
+                  <li><a href="weatherdata.html" target="blank">Snyders Weather Data</a></li>
+                  <li><a href="weatherdata-glasgow.html" target="blank">Glasgow Weather Data</a></li>
+                  <li><a href="chargerdata.html" target="blank">Synders Solar Charger Data</a></li>
+                  <li><a href="chargerdata-glasgow.html" target="blank">Synders Solar Charger Data</a></li>
                   <li><a href="trailstatus.html" target="blank">Current Trail Status</a></li>
-                  <li><a href="http://data.trailmonitoring.ca" target="blank">Thingspeak Trailcam Data</a></li>
-                  <li><a href="http://data2.trailmonitoring.ca" target="blank">Thingspeak Dagmar Moisture Sensor Data</a></li>
-                  <li><a href="http://data3.trailmonitoring.ca" target="blank">Thingspeak Solar Charger Data</a></li>
                 </ul>
             </li>
                 <li class="contact"><a href="contact.html">Contact</a></li>
@@ -95,8 +94,7 @@
     <div class="content-inner">
       <!--About us content-->
       <div class="full-width-transparent clearfix">
-        <h1>Trail Monitoring System</h1>
-        <h2>Weather Data</h2>
+        <h1>Snyders Weather Data</h1>
 
         <!--Heading tag examples-->
         <div class="clearfix bottom-breaker">
@@ -104,10 +102,19 @@
           <div id="status_loaded" hidden=false><h3 id="status_text">Loaded and Update to Date</h3></div>
         </div>
         <div class="clearfix bottom-breaker">
-          <div id="dials" style="width:600px;height:300px;"></div>
+          <div id="dials" style="width:900px;height:700px;"></div>
+        </div>
+        <div class="clearfix bottom-breaker">
+          <div id="rainChart" style="width:900px;height:400px;"></div>
         </div>
         <div class="clearfix bottom-breaker">
           <div id="temperatureChart" style="width:900px;height:400px;"></div>
+        </div>
+        <div class="clearfix bottom-breaker">
+          <div id="humidityChart" style="width:900px;height:400px;"></div>
+        </div>
+        <div class="clearfix bottom-breaker">
+          <div id="airPressureChart" style="width:900px;height:400px;"></div>
         </div>
         <div class="clearfix bottom-breaker">
           <div id="lightChart" style="width:900px;height:400px;"></div>
