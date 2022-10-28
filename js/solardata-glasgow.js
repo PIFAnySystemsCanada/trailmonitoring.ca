@@ -194,7 +194,7 @@ function updateSolarWidgets()
 	loaded.hidden = true;
 
 	(async function () {
-		var solardata = await getRESTData(getUrl("snyders", "array_voltage", "last"));
+		var solardata = await getRESTData(getUrl("glasgow", "array_voltage", "last"));
 		var currentitem = solardata["items"]["value"];
 		solarWidgets.setPVVoltageDials(currentitem);
 		solarWidgets.drawWidgets();
@@ -203,7 +203,7 @@ function updateSolarWidgets()
 	})();
 
 	(async function () {
-		var solardata = await getRESTData(getUrl("snyders", "battery_voltage", "last"));
+		var solardata = await getRESTData(getUrl("glasgow", "battery_voltage", "last"));
 		var currentitem = solardata["items"]["value"];
 		solarWidgets.setBatVoltageDials(currentitem);
 		solarWidgets.drawWidgets();
@@ -212,7 +212,7 @@ function updateSolarWidgets()
 	})();
 
 	(async function () {
-		var solardata = await getRESTData(getUrl("snyders", "load_power", "last"));
+		var solardata = await getRESTData(getUrl("glasgow", "load_power", "last"));
 		var currentitem = solardata["items"]["value"];
 		solarWidgets.setLoadPowerDials(currentitem);
 		solarWidgets.drawWidgets();
@@ -221,7 +221,7 @@ function updateSolarWidgets()
 	})();
 
 	(async function () {
-		var seriesdata = await getRESTData(getUrl("snyders", "array_power", "series"));
+		var seriesdata = await getRESTData(getUrl("glasgow", "array_power", "series"));
 		var timedata_x = new Array();
 		var seriesdata_y = new Array();
 		var currentlevel = seriesdata["items"]["last"]["value"];
@@ -240,7 +240,7 @@ function updateSolarWidgets()
 	})();
 
 	(async function () {
-		var seriesdata = await getRESTData(getUrl("snyders", "battery_soc", "series"));
+		var seriesdata = await getRESTData(getUrl("glasgow", "battery_soc", "series"));
 		var timedata_x = new Array();
 		var seriesdata_y = new Array();
 		var currentlevel = seriesdata["items"]["last"]["value"];

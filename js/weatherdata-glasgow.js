@@ -1,4 +1,4 @@
-class WeatherWidgets
+class WeatherWidgetsGlasgow
 {
 	constructor()
 	{
@@ -31,7 +31,7 @@ class WeatherWidgets
 			{
 				domain: { row: 0, column: 2 },
 				value: 0,
-				title: { text: "Current Ground Temp (C)" },
+				title: { text: "PlaceHolder" },
 				type: "indicator",
 				mode: "number+delta+gauge",
 				delta: { reference: 0 },
@@ -67,7 +67,7 @@ class WeatherWidgets
 			  {
 				domain: { row: 1, column: 2 },
 				value: 0,
-				title: { text: "Ground Moisture" },
+				title: { text: "Placeholder" },
 				type: "indicator",
 				mode: "number+delta+gauge",
 				delta: { reference: 0 },
@@ -140,14 +140,6 @@ class WeatherWidgets
 				mode: "lines",
 				name: 'Air Temp (C)',
 				line: {color: '#FFE900'}
-			},
-			{
-				x: [dateString],
-				y: [0],
-				type: 'scatter',
-				mode: "lines",
-				name: 'Ground Temp (C)',
-				line: {color: '#08FF08'}
 			}
 		];
 		this.rainChartLayout = {
@@ -372,11 +364,12 @@ class WeatherWidgets
 }
 
 var alreadyInitialized = false;
+//var measuresdata = getRESTData(getMainUrl("weather", "glasgow"))
 
 function updateWeatherWidgets()
 {
 		var lasttime = new Date()
-		var weatherWidgets = new WeatherWidgets();
+		var weatherWidgets = new WeatherWidgetsGlasgow();
 		if (!alreadyInitialized)
 		{
 			weatherWidgets.drawWidgets();
@@ -389,7 +382,7 @@ function updateWeatherWidgets()
 
 		// Download and clean up our data
 		(async function () {
-			var lightdata = await getRESTData(getUrl("snyders", "lightlevel", "series"));
+			var lightdata = await getRESTData(getUrl("glasgow", "lightlevel", "series"));
 			var timedata_x = new Array();
 			var lightdata_y = new Array();
 			var currentlight = lightdata["items"]["last"]["value"];
@@ -407,7 +400,7 @@ function updateWeatherWidgets()
 		})();
 
 		(async function () {
-			var raindata = await getRESTData(getUrl("snyders", "mm_per_hour_rain", "series"));
+			var raindata = await getRESTData(getUrl("glasgow", "mm_per_hour_rain", "series"));
 			var timedata_x = new Array();
 			var raindata_y = new Array();
 			var currentrain = raindata["items"]["last"]["value"];
@@ -426,7 +419,7 @@ function updateWeatherWidgets()
 		})();
 
 		(async function () {
-			var temperaturedata = await getRESTData(getUrl("snyders", "temperature", "series"));
+			var temperaturedata = await getRESTData(getUrl("glasgow", "temperature", "series"));
 			var timedata_x = new Array();
 			var airtempdata_y = new Array();
 			var maxtemp = temperaturedata.items.max.value;
@@ -446,7 +439,7 @@ function updateWeatherWidgets()
 		})();
 
 		(async function () {
-			var humiditydata = await getRESTData(getUrl("snyders", "humidity", "series"));
+			var humiditydata = await getRESTData(getUrl("glasgow", "humidity", "series"));
 			var timedata_x = new Array();
 			var humiditydata_y = new Array();
 			var maxhumidiy = humiditydata.items.max.value;
@@ -465,7 +458,7 @@ function updateWeatherWidgets()
 		})();
 
 		(async function () {
-			var airpressuredata = await getRESTData(getUrl("snyders", "pressure", "series"));
+			var airpressuredata = await getRESTData(getUrl("glasgow", "pressure", "series"));
 			var timedata_x = new Array();
 			var airpressuredata_y = new Array();
 			var maxairpressure = airpressuredata.items.max.value;
@@ -483,8 +476,9 @@ function updateWeatherWidgets()
 			loaded.hidden = false;
 		})();
 
+/*		Glasgow doesnt have ground temp
 		(async function () {
-			var sensordata = await getRESTData(getUrl("snyders", "groundtemperature", "series"));
+			var sensordata = await getRESTData(getUrl("glasgow", "groundtemperature", "series"));
 			var ok = sensordata["properties"]["ok"]
 			if (ok != "1") {
 				console.log("unable to get ground temp data")
@@ -501,10 +495,10 @@ function updateWeatherWidgets()
 			weatherWidgets.setGroundTempDials(currentgroundtemp, maxgroundtemp);
 			weatherWidgets.setGroundTempChart(timedata_x, groundtempdata_y);
 			weatherWidgets.drawWidgets();
-		})();
+		})();*/
 
 		(async function () {
-			var sensordata = await getRESTData(getUrl("snyders", "event_acc_rain", "last"));
+			var sensordata = await getRESTData(getUrl("glasgow", "event_acc_rain", "last"));
 			var ok = sensordata["properties"]["ok"]
 			if (ok != "1") {
 				console.log("unable to get ground temp data");
@@ -515,7 +509,7 @@ function updateWeatherWidgets()
 		})();
 
 		(async function () {
-			var sensordata = await getRESTData(getUrl("snyders", "current_acc_rain", "last"));
+			var sensordata = await getRESTData(getUrl("glasgow", "current_acc_rain", "last"));
 			var ok = sensordata["properties"]["ok"]
 			if (ok != "1") {
 				console.log("unable to get ground temp data");
@@ -526,7 +520,7 @@ function updateWeatherWidgets()
 		})();
 
 		(async function () {
-			var sensordata = await getRESTData(getUrl("snyders", "dewpoint", "last"));
+			var sensordata = await getRESTData(getUrl("glasgow", "dewpoint", "last"));
 			var ok = sensordata["properties"]["ok"]
 			if (ok == "1") {
 				var currenteventrain = sensordata["items"]["value"];
@@ -538,7 +532,7 @@ function updateWeatherWidgets()
 		})();
 
 		(async function () {
-			var sensordata = await getRESTData(getUrl("snyders", "humidex", "last"));
+			var sensordata = await getRESTData(getUrl("glasgow", "humidex", "last"));
 			var ok = sensordata["properties"]["ok"]
 			if (ok == "1") {
 				var currentvalue = sensordata["items"]["value"];

@@ -10,7 +10,7 @@
 var snyders_weather = "synders_0766BC";
 var glasgow_weather = "glasgow_e969EC";
 var snyders_solar = "snyders_5e6870";
-var glasgow_weather = "glasgow_53F0E0";
+var glasgow_solar = "glasgow_53F0E0";
 
 var api_url = "https://api.trailrabbit.io/timestream"
 var measures = {
