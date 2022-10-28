@@ -37,12 +37,20 @@
 
             <!--Horizontal Menu-->
             <ul id="horz-nav-ul" class="sf-menu">
-              <li class="home"><a href="index.html">Home</a></li>
-              <li class="about"><a href="#" onclick="return false;">About</a>
-                <ul>
-                  <li class="about"><a href="about.html">About the Project</a></li>
-                  <li class="about"><a href="volunteers.html">Volunteers</a></li>
-                </ul>
+                <li class="home"><a href="index.html">Home</a></li>
+                <li class="about"><a href="#" onclick="return false;">About</a>
+                  <ul>
+                    <li class="about"><a href="about.html">About the Project</a></li>
+                  </ul>
+                </li>
+                    <li class="portfolio"><a href="#" onclick="return false;">Weather/Trail Data</a>
+                  <ul>
+                    <li><a href="weatherdata.html" target="blank">Snyders Weather Data</a></li>
+                    <li><a href="weatherdata-glasgow.html" target="blank">Glasgow Weather Data</a></li>
+                    <li><a href="chargerdata.html" target="blank">Synders Solar Charger Data</a></li>
+                    <li><a href="chargerdata-glasgow.html" target="blank">Glasgow Solar Charger Data</a></li>
+                    <li><a href="trailstatus.html" target="blank">Current Trail Status</a></li>
+                        </ul>
               </li>
                   <li class="portfolio"><a href="#" onclick="return false;">Weather/Trail Data</a>
                 <ul>
@@ -131,17 +139,13 @@
             <h2>Weather Station</h2>
             <p>Integrated sensors to provide sun, wind, temperature, pressure, soil temperature, soil moisture type data to the cloud. All sensors log to AWS IoT Core. Currently, Grafana is used as the dasboard and is runing on AWS Fargate</p>
             <h2>AWS Backend</h2>
-            <p>We are using AWS for all services in the backend including AWS IoT core, Timestream, Lambda, API Gateway, Aurora DB, Fargate, Secrets Manager, etc.. The system will be 100% serverless.
+            <p>Our system uses AWS IoT core and AWS Timestream for storing and retrieving data.
             </p>
             <h2>Future Directions: Sensor Network and Artifical Intelligence</h2>
             <P>Currently under test is a sensor system consisting of soil moisture, soil temperature, and rainfall detection. We plan to build on this system and deploy them throughout the forest using low power radio transmitters to get the data back to the trailhead for transmission to the internet.
               Once we have a large enough sensor network and enough data to process, we will use AI to review the data. The goal is to have sensor network determine if the trails should be opened or closed automatically without human intervention. AWS offers a AI service to mine the data to find trends. We intend explore these options.
               Additionally, AWS does image processing both localling using AWS GreenGrass and cloud services to process image data to allow us to determine trail usership by using cameras at the trailhead. We could even deploy cameras at the trailhead
               to determine number of open parking spots, or if a bike theft is happening. There are lots possiblities.              
-
-            <h2>We Need Help</h2>
-            <p>We are running the project as an open source collaboration. If you are interested in participating in the project, we would use help with hardware design, printed circuit board design, software project. We are willing to work with those who have time to learn programming. </p>
-            <p>See how <a href="volunteers.html">"volunteers"</a> page for what we are looking for.</p>
         </div>
         <!--End Heading tag examples-->
 
@@ -163,12 +167,12 @@
           <div class="one-of-two">
           <h3>ESP32 Modbus logger</h3>
           <img class="img-left" src="images/esp32-modbus.jpg" width="200" alt="remotesensor" />
-           <p>Interfacing to the modbus on the EPever controller was a simple matter. The ESP32 reads the read time data from the solar charger, and uploads the data to <a href="http://data3.trailmonitoring.ca">ThinkSpeak channel</a>. </p>
+           <p>Interfacing to the modbus on the EPever controller was a simple matter. The ESP32 reads the read time data from the solar charger, and uploads the data to AWS IOT core. </p>
            </div>
            <div class="two-of-two">
            <h3>Where we started</h3>
            <img class="img-right" src="images/trailcam.jpg" width="200" alt="solarpanel" />
-           <p>Using an embedded camera and a 3G modem, this trail camera device, based on a Raspberry PI, sent images to twitter. </p>
+           <p>Using an embedded camera and a 3G modem, this trail camera device, based on a Raspberry PI, sent images to twitter. THis camera has since been retired. </p>
            </div>
        </div>
        <!--End Images in content example-->

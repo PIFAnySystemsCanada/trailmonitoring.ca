@@ -12,16 +12,16 @@
 <!--[if IE]>
     <link rel="stylesheet" type="text/css" href="css/ie.css" />
 <![endif]-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/plugins.js"></script>
-<script type="text/javascript" src="js/scripts.js"></script>
 <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript" src="js/utility.js"></script>
-<script type="text/javascript" src="js/tsstatus.js"></script>
+<script type="text/javascript" src="js/solardata-glasgow.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
 </head>
 <body>
 <div id="nojs-background">
-    <img src="images/webcam/trailcam-7.png" alt="" /><!-- Non-JavaScript background -->
 </div>
 <!--Start Outside-->
 <div class="outside"><a name="top"></a>
@@ -92,15 +92,20 @@
     <div class="content-inner">
       <!--About us content-->
       <div class="full-width-transparent clearfix">
-        <h1>Trail Monitoring System</h1>
-        <h2>Trail Status</h2>
-
         <!--Heading tag examples-->
+        <h1>Glasgow Solar Charger Data</h1>
         <div class="clearfix bottom-breaker">
-          <div id="tsphoto" align="center"><img id="tsphotoimg" alt="Loading..." width="400"></div>
-          <div id="tstext"></div>
-          <div id="tsmessage"></div>
-          <div id="tsupdated"></div>
+          <div id="status_loading"><h3>(Re)Loading data....<i class="fa fa-refresh fa-spin" style="font-size:18px"></i></h3></div>
+          <div id="status_loaded" hidden=true><h3 id="status_text">Loaded and Update to Date</h3></div>
+        </div>
+        <div class="clearfix bottom-breaker">
+          <div id="dials" style="width:750px;height:500px;"></div>
+        </div>
+        <div class="clearfix bottom-breaker">
+          <div id="powerChart" style="width:900px;height:400px;"></div>
+        </div>
+        <div class="clearfix bottom-breaker">
+          <div id="batsocChart" style="width:900px;height:400px;"></div>
         </div>
         <!--End Heading tag examples-->
 
@@ -118,7 +123,7 @@
     <div class="footer-inside clearfix">
 
       <!--Footers Left Column-->
-      <div class="foot-left-col">Copyright &copy; 2021 <a href="http://trailmonitoringsystem.com" class="white-link">trailmonitoringsystem.com</a> </div>
+      <div class="foot-left-col">Copyright &copy; 2022 <a href="http://trailmonitoringsystem.com" class="white-link">trailmonitoringsystem.com</a> </div>
       <!--End Footers Left Column-->
 
       <!--Footers Right Column-->
@@ -134,7 +139,7 @@
             <div class="clearfix">
               <div class="one-icon-wrap"><a href="https://instagram.com/trailmonitoring"><img src="images/social-icons/instagram.png" width="32" height="32" alt="Instagram" /></a></div>
               <div class="one-icon-wrap"><a href="https://twitter.com/trailmonitoring"><img src="images/social-icons/twitter.png" width="32" height="32" alt="Twitter" /></a></div>
-          </div>
+           </div>
         </div>
 
         <!--Hidden pop out boxes - Twitter-->
