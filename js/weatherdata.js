@@ -69,7 +69,7 @@ class WeatherWidgets
 				value: 0,
 				title: { text: "Ground Moisture" },
 				type: "indicator",
-				mode: "number+delta+gauge",
+				mode: "number+gauge",
 				delta: { reference: 0 },
 				gauge: { axis: { range: [0, 2500] } }
 			  },
@@ -296,10 +296,9 @@ class WeatherWidgets
 		this.dialData[5].delta.reference = reference;
 	}
 
-	setGroundMoistureDials(value, reference)
+	setGroundMoistureDials(value)
 	{
 		this.dialData[6].value = value;
-		this.dialData[6].delta.reference = reference;
 	}
 
 	setAirPressureDials(value, reference)
@@ -543,6 +542,18 @@ function updateWeatherWidgets()
 			if (ok == "1") {
 				var currentvalue = sensordata["items"]["value"];
 				weatherWidgets.setHumidexDials(currentvalue);
+				weatherWidgets.drawWidgets();
+			} else {
+				console.log("unable to get dewpoint data");
+			}
+		})();
+
+		(async function () {
+			var sensordata = await getRESTData(getUrl("snyders", "groundmoisture", "last"));
+			var ok = sensordata["properties"]["ok"]
+			if (ok == "1") {
+				var currentvalue = sensordata["items"]["value"];
+				weatherWidgets.setGroundMoistureDials(currentvalue);
 				weatherWidgets.drawWidgets();
 			} else {
 				console.log("unable to get dewpoint data");
