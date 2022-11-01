@@ -122,6 +122,14 @@ textarea {
 	position: relative;
 }
 
+#header-inner-mobile {
+	width: 340px;
+	height: 140px;
+	padding: 0;
+	margin: 0 auto;
+	position: relative;
+}
+
 #nav-wrap {
 	float: right;
 	padding: 0;
@@ -139,6 +147,14 @@ textarea {
 	margin: 0 auto;
 	border: 1px solid #252525;
 	width: 750px;
+}
+
+#nav-wrap-inner-mobile {
+	float: left;
+	padding: 0;
+	margin: 0 auto;
+	border: 1px solid #252525;
+	width: 500px;
 }
 
 .content-outer {

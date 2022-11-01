@@ -17,6 +17,15 @@
 <script type="text/javascript" src="data/images.js"></script>
 <script type="text/javascript" src="js/utility.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.5/mobile-detect.min.js"></script>
+<script>
+  window.addEventListener("load", () => {
+    var md = new MobileDetect(window.navigator.userAgent);
+    if (md.mobile()) {
+      location.replace("mobile.html")
+    }
+  });
+  </script>
 </head>
 <body>
 <div id="nojs-background">
