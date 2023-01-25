@@ -179,7 +179,7 @@ var alreadyInitialized = false;
 
 function updateSolarWidgets()
 {
-	var lasttime = new Date()
+	var lasttime = new Date(2022, 1, 1)
 	var solarWidgets = new SolarWidgets();
 	// First time threw, just draw empty widgets
 	if (!alreadyInitialized)
@@ -195,65 +195,75 @@ function updateSolarWidgets()
 
 	(async function () {
 		var solardata = await getRESTData(getUrl("snyders", "array_voltage", "last"));
-		var currentitem = solardata["items"]["value"];
-		solarWidgets.setPVVoltageDials(currentitem);
-		solarWidgets.drawWidgets();
-		loading.hidden = true;
-		loaded.hidden = false;
+		if ((solardata["properties"]["ok"] == 1) && (solardata["properties"]["count"] > 0)) {
+			var currentitem = solardata["items"]["value"];
+			solarWidgets.setPVVoltageDials(currentitem);
+			solarWidgets.drawWidgets();
+			loading.hidden = true;
+			loaded.hidden = false;
+		}
 	})();
 
 	(async function () {
 		var solardata = await getRESTData(getUrl("snyders", "battery_voltage", "last"));
-		var currentitem = solardata["items"]["value"];
-		solarWidgets.setBatVoltageDials(currentitem);
-		solarWidgets.drawWidgets();
-		loading.hidden = true;
-		loaded.hidden = false;
+		if ((solardata["properties"]["ok"] == 1) && (solardata["properties"]["count"] > 0)) {
+			var currentitem = solardata["items"]["value"];
+			solarWidgets.setBatVoltageDials(currentitem);
+			solarWidgets.drawWidgets();
+			loading.hidden = true;
+			loaded.hidden = false;
+		}
 	})();
 
 	(async function () {
 		var solardata = await getRESTData(getUrl("snyders", "load_power", "last"));
-		var currentitem = solardata["items"]["value"];
-		solarWidgets.setLoadPowerDials(currentitem);
-		solarWidgets.drawWidgets();
-		loading.hidden = true;
-		loaded.hidden = false;
+		if ((solardata["properties"]["ok"] == 1) && (solardata["properties"]["count"] > 0)) {
+			var currentitem = solardata["items"]["value"];
+			solarWidgets.setLoadPowerDials(currentitem);
+			solarWidgets.drawWidgets();
+			loading.hidden = true;
+			loaded.hidden = false;
+		}
 	})();
 
 	(async function () {
 		var seriesdata = await getRESTData(getUrl("snyders", "array_power", "series"));
-		var timedata_x = new Array();
-		var seriesdata_y = new Array();
-		var currentlevel = seriesdata["items"]["last"]["value"];
-		var maxlevel = seriesdata["items"]["max"]["value"]
-		seriesdata.items.data.forEach( item => {
-			var temp = parseFloat(item['value']);
-			 timedata_x.push(item['time']);
-			 seriesdata_y.push(temp);
-		});
+		if ((seriesdata["properties"]["ok"] == 1) && (seriesdata["properties"]["count"] > 0)) {
+			var timedata_x = new Array();
+			var seriesdata_y = new Array();
+			var currentlevel = seriesdata["items"]["last"]["value"];
+			var maxlevel = seriesdata["items"]["max"]["value"]
+			seriesdata.items.data.forEach( item => {
+				var temp = parseFloat(item['value']);
+				timedata_x.push(item['time']);
+				seriesdata_y.push(temp);
+			});
 
-		solarWidgets.setArrayPowerDials(currentlevel, maxlevel);
-		solarWidgets.setArrayPowerSeries(timedata_x, seriesdata_y);
-		solarWidgets.drawWidgets();
-		loading.hidden = true;
-		loaded.hidden = false;
+			solarWidgets.setArrayPowerDials(currentlevel, maxlevel);
+			solarWidgets.setArrayPowerSeries(timedata_x, seriesdata_y);
+			solarWidgets.drawWidgets();
+			loading.hidden = true;
+			loaded.hidden = false;
+		}
 	})();
 
 	(async function () {
 		var seriesdata = await getRESTData(getUrl("snyders", "battery_soc", "series"));
-		var timedata_x = new Array();
-		var seriesdata_y = new Array();
-		var currentlevel = seriesdata["items"]["last"]["value"];
-		var maxlevel = seriesdata["items"]["max"]["value"]
-		seriesdata.items.data.forEach( item => {
-			var value = parseInt(item['value']);
-			timedata_x.push(item['time']);
-			seriesdata_y.push(value);
-		});
+		if ((seriesdata["properties"]["ok"] == 1) && (seriesdata["properties"]["count"] > 0)) {
+			var timedata_x = new Array();
+			var seriesdata_y = new Array();
+			var currentlevel = seriesdata["items"]["last"]["value"];
+			var maxlevel = seriesdata["items"]["max"]["value"]
+			seriesdata.items.data.forEach( item => {
+				var value = parseInt(item['value']);
+				timedata_x.push(item['time']);
+				seriesdata_y.push(value);
+			});
 
-		solarWidgets.setSOCDials(currentlevel, maxlevel);
-		solarWidgets.setSOCSeries(timedata_x, seriesdata_y);
-		solarWidgets.drawWidgets();
+			solarWidgets.setSOCDials(currentlevel, maxlevel);
+			solarWidgets.setSOCSeries(timedata_x, seriesdata_y);
+			solarWidgets.drawWidgets();
+		}
 		loading.hidden = true;
 		loaded.hidden = false;
 	})();

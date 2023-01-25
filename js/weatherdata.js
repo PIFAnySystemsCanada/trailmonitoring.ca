@@ -374,7 +374,7 @@ var alreadyInitialized = false;
 
 function updateWeatherWidgets()
 {
-		var lasttime = new Date()
+		var lasttime = new Date(2022, 1, 1)
 		var weatherWidgets = new WeatherWidgets();
 		if (!alreadyInitialized)
 		{
@@ -391,172 +391,170 @@ function updateWeatherWidgets()
 			var lightdata = await getRESTData(getUrl("snyders", "lightlevel", "series"));
 			var timedata_x = new Array();
 			var lightdata_y = new Array();
-			var currentlight = lightdata["items"]["last"]["value"];
-			lightdata.items.data.forEach( item => {
-				var temp = parseFloat(item['value']);
-			 	timedata_x.push(item['time']);
-			 	lightdata_y.push(temp);
-			});
+			if ((lightdata["properties"]["ok"] == 1) && (lightdata["properties"]["count"] > 0))  {
+				var currentlight = lightdata["items"]["last"]["value"];
+				lightdata.items.data.forEach( item => {
+					var temp = parseFloat(item['value']);
+					timedata_x.push(item['time']);
+					lightdata_y.push(temp);
+				});
 
-			weatherWidgets.setLightLevelDials(currentlight, 5500);
-			weatherWidgets.setLightLevelChart(timedata_x, lightdata_y);
-			weatherWidgets.drawWidgets();
-			loading.hidden = true;
-			loaded.hidden = false;
+				weatherWidgets.setLightLevelDials(currentlight, 5500);
+				weatherWidgets.setLightLevelChart(timedata_x, lightdata_y);
+				weatherWidgets.drawWidgets();
+				loading.hidden = true;
+				loaded.hidden = false;
+			}
 		})();
 
 		(async function () {
 			var raindata = await getRESTData(getUrl("snyders", "mm_per_hour_rain", "series"));
 			var timedata_x = new Array();
 			var raindata_y = new Array();
-			var currentrain = raindata["items"]["last"]["value"];
-			var maxrain = raindata["items"]["max"]["value"];
-			raindata.items.data.forEach( item => {
-				var temp = parseFloat(item['value']);
-			 	timedata_x.push(item['time']);
-			 	raindata_y.push(temp);
-			});
+			if ((raindata["properties"]["ok"] == 1) && (raindata["properties"]["count"] > 0))  {
+				var currentrain = raindata["items"]["last"]["value"];
+				var maxrain = raindata["items"]["max"]["value"];
+				raindata.items.data.forEach( item => {
+					var temp = parseFloat(item['value']);
+					timedata_x.push(item['time']);
+					raindata_y.push(temp);
+				});
 
-			weatherWidgets.setRainPerHourDials(currentrain, maxrain);
-			weatherWidgets.setRainPerHourChart(timedata_x, raindata_y);
-			weatherWidgets.drawWidgets();
-			loading.hidden = true;
-			loaded.hidden = false;
+				weatherWidgets.setRainPerHourDials(currentrain, maxrain);
+				weatherWidgets.setRainPerHourChart(timedata_x, raindata_y);
+				weatherWidgets.drawWidgets();
+				loading.hidden = true;
+				loaded.hidden = false;
+			}
 		})();
 
 		(async function () {
 			var temperaturedata = await getRESTData(getUrl("snyders", "temperature", "series"));
 			var timedata_x = new Array();
 			var airtempdata_y = new Array();
-			var maxtemp = temperaturedata.items.max.value;
-			var currenttemp = temperaturedata["items"]["last"]["value"];
-			lasttime = temperaturedata["items"]["last"]["time"];
-			temperaturedata.items.data.forEach( item => {
-				var temp = parseFloat(item['value']);
-			 	timedata_x.push(item['time']);
-			 	airtempdata_y.push(temp);
-			});
+			if ((temperaturedata["properties"]["ok"] == 1) && (temperaturedata["properties"]["count"] > 0))  {
+				var maxtemp = temperaturedata.items.max.value;
+				var currenttemp = temperaturedata["items"]["last"]["value"];
+				lasttime = temperaturedata["items"]["last"]["time"];
+				temperaturedata.items.data.forEach( item => {
+					var temp = parseFloat(item['value']);
+					timedata_x.push(item['time']);
+					airtempdata_y.push(temp);
+				});
 
-			weatherWidgets.setAirTempDials(currenttemp, maxtemp);
-			weatherWidgets.setAirTempChart(timedata_x, airtempdata_y);
-			weatherWidgets.drawWidgets();
-			loading.hidden = true;
-			loaded.hidden = false;
+				weatherWidgets.setAirTempDials(currenttemp, maxtemp);
+				weatherWidgets.setAirTempChart(timedata_x, airtempdata_y);
+				weatherWidgets.drawWidgets();
+				loading.hidden = true;
+				loaded.hidden = false;
+			}
 		})();
 
 		(async function () {
 			var humiditydata = await getRESTData(getUrl("snyders", "humidity", "series"));
 			var timedata_x = new Array();
 			var humiditydata_y = new Array();
-			var maxhumidiy = humiditydata.items.max.value;
-			var currenthumidity = humiditydata["items"]["last"]["value"];
-			humiditydata.items.data.forEach( item => {
-				var temp = parseFloat(item['value']);
-			 	timedata_x.push(item['time']);
-			 	humiditydata_y.push(temp);
-			});
+			if ((humiditydata["properties"]["ok"] == 1) && (humiditydata["properties"]["count"] > 0))  {
+				var maxhumidiy = humiditydata.items.max.value;
+				var currenthumidity = humiditydata["items"]["last"]["value"];
+				humiditydata.items.data.forEach( item => {
+					var temp = parseFloat(item['value']);
+					timedata_x.push(item['time']);
+					humiditydata_y.push(temp);
+				});
 
-			weatherWidgets.setHumidityDials(currenthumidity, maxhumidiy);
-			weatherWidgets.setHumidityChart(timedata_x, humiditydata_y);
-			weatherWidgets.drawWidgets();
-			loading.hidden = true;
-			loaded.hidden = false;
+				weatherWidgets.setHumidityDials(currenthumidity, maxhumidiy);
+				weatherWidgets.setHumidityChart(timedata_x, humiditydata_y);
+				weatherWidgets.drawWidgets();
+				loading.hidden = true;
+				loaded.hidden = false;
+			}
 		})();
 
 		(async function () {
 			var airpressuredata = await getRESTData(getUrl("snyders", "pressure", "series"));
 			var timedata_x = new Array();
 			var airpressuredata_y = new Array();
-			var maxairpressure = airpressuredata.items.max.value;
-			var currentairpressure = airpressuredata["items"]["last"]["value"];
-			airpressuredata.items.data.forEach( item => {
-				var temp = parseFloat(item['value']);
-			 	timedata_x.push(item['time']);
-			 	airpressuredata_y.push(temp);
-			});
+			if ((airpressuredata["properties"]["ok"] == 1) && (airpressuredata["properties"]["count"] > 0))  {
+				var maxairpressure = airpressuredata.items.max.value;
+				var currentairpressure = airpressuredata["items"]["last"]["value"];
+				airpressuredata.items.data.forEach( item => {
+					var temp = parseFloat(item['value']);
+					timedata_x.push(item['time']);
+					airpressuredata_y.push(temp);
+				});
 
-			weatherWidgets.setAirPressureDials(currentairpressure, maxairpressure);
-			weatherWidgets.setAirPressureChart(timedata_x, airpressuredata_y);
-			weatherWidgets.drawWidgets();
-			loading.hidden = true;
-			loaded.hidden = false;
+				weatherWidgets.setAirPressureDials(currentairpressure, maxairpressure);
+				weatherWidgets.setAirPressureChart(timedata_x, airpressuredata_y);
+				weatherWidgets.drawWidgets();
+				loading.hidden = true;
+				loaded.hidden = false;
+			}
 		})();
 
 		(async function () {
 			var sensordata = await getRESTData(getUrl("snyders", "groundtemperature", "series"));
-			var ok = sensordata["properties"]["ok"]
-			if (ok != "1") {
-				console.log("unable to get ground temp data")
+			if ((sensordata["properties"]["ok"] == 1) && (sensordata["properties"]["count"] > 0))  {
+				var timedata_x = new Array();
+				var groundtempdata_y = new Array();
+				var maxgroundtemp = sensordata["items"]["max"]["value"];
+				var currentgroundtemp = sensordata["items"]["last"]["value"];
+				sensordata.items.data.forEach(item => {
+					var groundtemp = parseFloat(item['field2']);
+					timedata_x.push(item['time']);
+					groundtempdata_y.push(groundtemp);
+				});
+				weatherWidgets.setGroundTempDials(currentgroundtemp, maxgroundtemp);
+				weatherWidgets.setGroundTempChart(timedata_x, groundtempdata_y);
+				weatherWidgets.drawWidgets();
 			}
-			var timedata_x = new Array();
-			var groundtempdata_y = new Array();
-			var maxgroundtemp = sensordata["items"]["max"]["value"];
-			var currentgroundtemp = sensordata["items"]["last"]["value"];
-			sensordata.items.data.forEach(item => {
-				var groundtemp = parseFloat(item['field2']);
-				timedata_x.push(item['time']);
-				groundtempdata_y.push(groundtemp);
-			});
-			weatherWidgets.setGroundTempDials(currentgroundtemp, maxgroundtemp);
-			weatherWidgets.setGroundTempChart(timedata_x, groundtempdata_y);
-			weatherWidgets.drawWidgets();
 		})();
 
 		(async function () {
 			var sensordata = await getRESTData(getUrl("snyders", "event_acc_rain", "last"));
-			var ok = sensordata["properties"]["ok"]
-			if (ok != "1") {
-				console.log("unable to get ground temp data");
+			if ((sensordata["properties"]["ok"] == 1) && (sensordata["properties"]["count"] > 0)) {
+				var currenteventrain = sensordata["items"]["value"];
+				weatherWidgets.setEventRainfallDials(currenteventrain);
+				weatherWidgets.drawWidgets();
 			}
-			var currenteventrain = sensordata["items"]["value"];
-			weatherWidgets.setEventRainfallDials(currenteventrain);
-			weatherWidgets.drawWidgets();
 		})();
 
 		(async function () {
 			var sensordata = await getRESTData(getUrl("snyders", "current_acc_rain", "last"));
-			var ok = sensordata["properties"]["ok"]
-			if (ok != "1") {
-				console.log("unable to get ground temp data");
+			if ((sensordata["properties"]["ok"] == 1) && (sensordata["properties"]["count"] > 0)) {
+				var currenteventrain = sensordata["items"]["value"];
+				weatherWidgets.setPeriodRainfallDials(currenteventrain);
+				weatherWidgets.drawWidgets();
 			}
-			var currenteventrain = sensordata["items"]["value"];
-			weatherWidgets.setPeriodRainfallDials(currenteventrain);
-			weatherWidgets.drawWidgets();
 		})();
 
 		(async function () {
 			var sensordata = await getRESTData(getUrl("snyders", "dewpoint", "last"));
-			var ok = sensordata["properties"]["ok"]
-			if (ok == "1") {
+			if ((sensordata["properties"]["ok"] == 1) && (sensordata["properties"]["count"] > 0)) {
 				var currenteventrain = sensordata["items"]["value"];
 				weatherWidgets.setDewpointDials(currenteventrain);
 				weatherWidgets.drawWidgets();
-			} else {
-				console.log("unable to get dewpoint data");
 			}
 		})();
 
 		(async function () {
 			var sensordata = await getRESTData(getUrl("snyders", "humidex", "last"));
-			var ok = sensordata["properties"]["ok"]
-			if (ok == "1") {
+			if ((sensordata["properties"]["ok"] == 1) && (sensordata["properties"]["count"] > 0)) {
 				var currentvalue = sensordata["items"]["value"];
 				weatherWidgets.setHumidexDials(currentvalue);
 				weatherWidgets.drawWidgets();
-			} else {
-				console.log("unable to get dewpoint data");
 			}
 		})();
 
 		(async function () {
 			var sensordata = await getRESTData(getUrl("snyders", "groundmoisture", "last"));
-			var ok = sensordata["properties"]["ok"]
-			if (ok == "1") {
+			if ((sensordata["properties"]["ok"] == 1) && (sensordata["properties"]["count"] > 0)) {
 				var currentvalue = sensordata["items"]["value"];
 				weatherWidgets.setGroundMoistureDials(currentvalue);
 				weatherWidgets.drawWidgets();
 			} else {
-				console.log("unable to get dewpoint data");
+				loading.hidden = true;
+				loaded.hidden = false;
 			}
 		})();
 
